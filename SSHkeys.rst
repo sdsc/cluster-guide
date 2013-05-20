@@ -1,3 +1,7 @@
+Using SSH Keys
+**************
+SSH Keys allow an extra layer of security for your cluster and any other cluster you access.  It is good practice to use SSH Keys to prevent your data from being accessed or corrupted by infiltrating users.
+
 Setting Up SSH Keys
 ===================
 You can create your ssh keys using the following command on your local computer::

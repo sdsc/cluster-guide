@@ -26,16 +26,19 @@ In order to prevent risk of corrupted hardware, do **not** exit this terminal un
 
    *This brings up the window in the picture below*
 
-If you need to look up the **hostnames** of your nodes then use the command::
-
-   rocks list host
-
-   *The hostnames are in the first column*
-
 .. figure:: images/5rocks-console_Cropped.png
    :align:  center
 
    *This is the process of the installation of the nodes shown through rocks console*
+
+If you need to look up the **hostnames** of your nodes then use the command::
+
+   [gsiman@hpcdev-006 ~]$ rocks list host
+   HOST              MEMBERSHIP   CPUS RACK RANK RUNACTION INSTALLACTION
+   hpcdev-006:       Frontend     8    0    0    os        install
+   devel-0-0:        Development  16   0    0    os        install
+
+   *The hostnames are in the first column*
 
 You will not be able to use the ``rocks console`` command once the installation is done, but at that point you will be able to simply ``ssh`` into it.  When *s appear between all of the *()s* you may press the *f8* key to quit the GUI without interupting the installation.
 
@@ -44,7 +47,7 @@ You will not be able to use the ``rocks console`` command once the installation 
 
    *Notice the appearance of the **
 
-If you would like to install nodes of a different appliance type repeat the process from `Installing Your Appliance Nodes`_.  Once the installation of your node(s) is complete test if you can ``ping`` and ``ssh`` into all of your nodes::
+Once the installation of your node(s) is complete test if you can ``ping`` and ``ssh`` into all of your nodes::
 
    ping devel-0-0
    ssh devel-0-0

@@ -12,18 +12,20 @@ Contents:
    SSHkeys.rst
    InstallingDevel.rst
    InstallingRolls.rst
+   RollTests.rst
    ReinstallingDevel.rst
    InstallingCompute.rst
-   ReinstallingNodes.rst
 
 Overview of Rocks Documentation
 ===============================
-In this documentation you will learn how to install the latest version of Rocks while building your Front End and the nodes that come with it.  While doing this you will create the roll distrobution for your nodes on your Front End.  This process is briefly shown in the below flow chart.
+In this documentation you will learn how to install the latest version of Rocks while building your Front End and its nodes..  While doing this you will create the roll distrobution for your nodes on your Front End.  This process is briefly shown in the below flow chart.
 
 .. figure:: images/0Flow_Chart.JPG
    :align:  center
 
    *This is the basic overview of what you will be doing in this tutorial.*
+
+The official and length version of the Rocks Installation can be found at the link below.
 
 `Official Rocks Documentation <http://www.rocksclusters.org/rocks-documentation/4.1/getting-started.html>`_
 
