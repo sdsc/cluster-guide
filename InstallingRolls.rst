@@ -1,11 +1,71 @@
 Installing Rocks Rolls
-======================
+**********************
 *Throughout this tutorial bare in mind that being in **root** is potentially dangerous to your system*
 
 In order to avoid unnecessary reinstallations of your front end, please do all ``make`` commands for creating ISOs on the development appliance.  This is to prevent any errors that may occur when creating the rolls from affecting your front end.  You may always reinstall your nodes if an error were to occur.
 
-**HOW TO GET TRITON REPO**
+How To Get The Triton Repo
+==========================
+The Triton Repo is located in GitHub.  A bash script has been supplied below in order for you to use git clone to acquire your own copy::
 
+   #/bin/bash
+   #This script will use git clone to copy over the triton repo from GitHub
+
+   #name your variables for each file that is online in an array
+   REPO=(R
+   amber
+   beast
+   biotools
+   chemistry
+   cilk
+   cmake
+   cp2k
+   cpmd
+   data-transfer
+   dataform
+   db2
+   ddt
+   envmodules
+   fftw
+   flexlm
+   fpmpi
+   fsa
+   gamess
+   hadoop
+   hdf
+   ib
+   idl
+   intel
+   lustre-client
+   moab
+   mpi
+   myri10Gbe
+   myrinet_mx
+   nagios
+   nwchem
+   ofed
+   pgi
+   scar
+   scipy
+   tau
+   thresher-config
+   triton-base
+   triton-config
+   valgrind)
+
+   #run a 'for loop' to grab each file using 'git clone'
+   for i in "${REPO[@]}"
+   do
+       git clone "http://git.rocksclusters.org/git/triton/$i/.git" "/state/partition1/triton/$i"
+
+Use a text editor such as `emacs` to create a `.sh` file for the bash script.  After you have made the file run is by doing::
+
+   sh triton_repo_script.sh
+
+Keep in mind that the second part of the ``git clone`` command in the for loop is the location which you are cloning the repo to.
+
+Rocks Rolls
+===========
 Typically the rolls that need to be installed manually are:
 
 *scar* *cmake* *mpi* *R* *fftw* *hdf* *math* *dataform*
