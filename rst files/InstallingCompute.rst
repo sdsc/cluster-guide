@@ -28,7 +28,7 @@ If you need to look up the **hostnames** of your nodes then use the command::
 
    rocks list host
 
-   *The hostnames are in the first column*
+*The hostnames are in the first column*
 
 .. figure:: images/5rocks-console_Cropped.png
    :align:  center

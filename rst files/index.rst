@@ -20,7 +20,7 @@ Overview of Rocks Documentation
 ===============================
 In this documentation you will learn how to install the latest version of Rocks while building your Front End and its nodes..  While doing this you will create the roll distrobution for your nodes on your Front End.  This process is briefly shown in the below flow chart.
 
-.. figure:: images/0Flow_Chart.JPG
+.. figure:: images/0Flow_Chart.png
    :align:  center
 
    *This is the basic overview of what you will be doing in this tutorial.*

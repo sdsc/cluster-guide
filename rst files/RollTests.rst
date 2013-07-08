@@ -28,63 +28,63 @@ Once you are in this directory you should be able to use an ``ls`` command to ch
 
 This will automatically run a script which should create an output similar to the following::
 
-[root@hpcdev-01 rolltests]# perl scar.t
-ok 1 - gfortran installed
-ok 2 - g++ installed
-ok 3 - ipmi installed
-ok 4 - gdb installed
-ok 5 - sysstat installed
-ok 6 - xterm installed
-ok 7 - php installed
-ok 8 - emacs installed
-ok 9 - gnu module installed
-ok 10 - gnu version module installed
-ok 11 - gnu version module link created
-ok 12 - module search path set up
-ok 13 - audit service created
-ok 14 - audit config created
-ok 15 - audit rules added
-/etc/init.d/audit: line 37: auditctl: command not found
-not ok 16 - audit running
-#   Failed test 'audit running'
-#   at scar.t line 38.
-#                   ''
-#     doesn't match '(?-xism:LIST_RULES)'
-ok 17 # skip not compute node
-ok 18 # skip not compute node
-ok 19 # skip not compute node
-ok 20 # skip not compute node
-ok 21 # skip not compute node
-ok 22 # skip not compute node
-ok 23 # skip not compute node
-ok 24 # skip not compute node
-ok 25 # skip not compute node
-ok 26 # skip not compute node
-ok 27 # skip not login node
-ok 28 # skip not login node
-ok 29 # skip not login node
-ok 30 # skip not login node
-ok 31 # skip not login node
-ok 32 # skip not login node
-ok 33 # skip not login node
-ok 34 # skip not login node
-ok 35 # skip not login node
-ok 36 # skip not login node
-ok 37 # skip not login node
-ok 38 # skip not login node
-ok 39 # skip not login node
-ok 40 # skip not login node
-ok 41 # skip not login node
-ok 42 # skip not login node
-ok 43 - scar library installed
-ok 44 - sphinx installed
-ok 45 - scar scripts installed
-ok 46 - sphinx installed
-ok 47 - gmond config modified
-ok 48 - login appliance defined
-ok 49 - PYTHONPATH modified
-ok 50 - install x11 on compute nodes
-1..50
-# Looks like you failed 1 test of 50.
+	[root@hpcdev-01 rolltests]# perl scar.t
+	ok 1 - gfortran installed
+	ok 2 - g++ installed
+	ok 3 - ipmi installed
+	ok 4 - gdb installed
+	ok 5 - sysstat installed
+	ok 6 - xterm installed
+	ok 7 - php installed
+	ok 8 - emacs installed
+	ok 9 - gnu module installed
+	ok 10 - gnu version module installed
+	ok 11 - gnu version module link created
+	ok 12 - module search path set up
+	ok 13 - audit service created
+	ok 14 - audit config created
+	ok 15 - audit rules added
+	/etc/init.d/audit: line 37: auditctl: command not found
+	not ok 16 - audit running
+	#   Failed test 'audit running'
+	#   at scar.t line 38.
+	#                   ''
+	#     doesn't match '(?-xism:LIST_RULES)'
+	ok 17 # skip not compute node
+	ok 18 # skip not compute node
+	ok 19 # skip not compute node
+	ok 20 # skip not compute node
+	ok 21 # skip not compute node
+	ok 22 # skip not compute node
+	ok 23 # skip not compute node
+	ok 24 # skip not compute node
+	ok 25 # skip not compute node
+	ok 26 # skip not compute node
+	ok 27 # skip not login node
+	ok 28 # skip not login node
+	ok 29 # skip not login node
+	ok 30 # skip not login node
+	ok 31 # skip not login node
+	ok 32 # skip not login node
+	ok 33 # skip not login node
+	ok 34 # skip not login node
+	ok 35 # skip not login node
+	ok 36 # skip not login node
+	ok 37 # skip not login node
+	ok 38 # skip not login node
+	ok 39 # skip not login node
+	ok 40 # skip not login node
+	ok 41 # skip not login node
+	ok 42 # skip not login node
+	ok 43 - scar library installed
+	ok 44 - sphinx installed
+	ok 45 - scar scripts installed
+	ok 46 - sphinx installed
+	ok 47 - gmond config modified
+	ok 48 - login appliance defined
+	ok 49 - PYTHONPATH modified
+	ok 50 - install x11 on compute nodes
+	1..50
+	# Looks like you failed 1 test of 50.
 
 From these outputs you should be able to find out whether or not your rolls have been installed correctly.
