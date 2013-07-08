@@ -30,5 +30,3 @@ The official and length version of the Rocks Installation can be found at the li
 `Official Rocks Documentation <http://www.rocksclusters.org/rocks-documentation/4.1/getting-started.html>`_
 
    *A link to the Rocks Cluster Distribution: Users Guide*
-
-For any questions, comments, or concerns please email Glenn Siman at gsiman@ucsd.edu.  Thank you for using this Rocks documentation site!
