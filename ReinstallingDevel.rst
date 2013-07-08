@@ -12,7 +12,7 @@ First set the boot action to install on the Front End by inputing::
    ipmitool chassis bootdev pxe options=persistent
    shutdown
 
-   *If you are reinstalling your Development Appliance due to dependencies then perform a ``reboot`` instead of a ``shutdown``*
+*If you are reinstalling your Development Appliance due to dependencies then perform a ``reboot`` instead of a ``shutdown``*
 
 Return to your Front End and remove the host so that it will reinstall upon boot::
 

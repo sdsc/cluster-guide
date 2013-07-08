@@ -1,6 +1,6 @@
 Installing Rocks Rolls
 **********************
-*Throughout this tutorial bare in mind that being in **root** is potentially dangerous to your system*
+Throughout this tutorial bare in mind that being in **root** is potentially dangerous to your system
 
 In order to avoid unnecessary reinstallations of your front end, please do all ``make`` commands for creating ISOs on the development appliance.  This is to prevent any errors that may occur when creating the rolls from affecting your front end.  You may always reinstall your nodes if an error were to occur.
 
@@ -83,7 +83,7 @@ Once in the directory run the ``make`` command.  It is recommended that you crea
 
    make default 2>&1 | tee log
 
-   *This pipe will create a log file located in the roll's directory*
+*This pipe will create a log file located in the roll's directory*
 
 In the log files you may use this command to check for errors::
 

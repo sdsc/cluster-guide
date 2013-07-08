@@ -24,7 +24,7 @@ In order to prevent risk of corrupted hardware, do **not** exit this terminal un
 
    rocks console devel-0-0
 
-   *This brings up the window in the picture below*
+*This brings up the window in the picture below*
 
 .. figure:: images/5rocks-console_Cropped.png
    :align:  center
