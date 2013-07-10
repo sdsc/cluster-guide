@@ -8,7 +8,7 @@ How To Get The Triton Repo
 ==========================
 The Triton Repo is located in GitHub.  A bash script has been supplied below in order for you to use git clone to acquire your own copy:
 
-https://raw.github.com/sdsc/cluster-guide/master/triton_repo_script.sh::
+https://raw.github.com/sdsc/cluster-guide/master/triton_repo_script.sh:
 
    #/bin/bash
    #This script will use git clone to copy over the triton repo from GitHub
