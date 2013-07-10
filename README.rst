@@ -4,19 +4,12 @@ Welcome to Rocks Documentation!
 *******************************
 
 Table of Contents
-
-`Setting Up Your Front End <https://github.com/sdsc/cluster-guide/blob/master/FrontEnd.rst>`_
-
+- `Setting Up Your Front End <https://github.com/sdsc/cluster-guide/blob/master/FrontEnd.rst>`_
 `Using SSH Keys <https://github.com/sdsc/cluster-guide/blob/master/SSHkeys.rst>`_
-
 `Installing Your Development Appliance <https://github.com/sdsc/cluster-guide/blob/master/FrontEnd.rst>`_
-
 `Installing Rocks Rolls <https://github.com/sdsc/cluster-guide/blob/master/FrontEnd.rst>`_
-
 `Testing Your Roll Installations <https://github.com/sdsc/cluster-guide/blob/master/FrontEnd.rst>`_
-
 `Reinstalling Your Development Appliance <https://github.com/sdsc/cluster-guide/blob/master/FrontEnd.rst>`_
-
 `Installing Your Compute Nodes <https://github.com/sdsc/cluster-guide/blob/master/FrontEnd.rst>`_
 
 Overview of Rocks Documentation
