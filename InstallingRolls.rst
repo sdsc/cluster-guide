@@ -57,6 +57,7 @@ The Triton Repo is located in GitHub.  A bash script has been supplied below in 
    for i in "${REPO[@]}"
    do
        git clone "http://git.rocksclusters.org/git/triton/$i/.git" "/state/partition1/triton/$i"
+   done
 
 Use a text editor such as `emacs` to create a `.sh` file for the bash script.  After you have made the file run is by doing::
 
