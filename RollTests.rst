@@ -1,6 +1,10 @@
-Testing your Roll Installations
-*******************************
-There are a few ways that you can test whether or not a roll has been successfully installed on a cluster.
+Debugging your Roll Installations
+*********************************
+There are a few ways that you can test whether or not a roll has been successfully installed on a cluster.  These debugging methods are discussed in detail on the Rocks Clusters documentation site listed below.
+
+`Rocks Cluster Debugging <http://www.rocksclusters.org/roll-documentation/developers-guide/5.4.3/testing-post.html>`_
+
+Below are a few debugging tests that you may also use.
 
 The XML File Test
 =================

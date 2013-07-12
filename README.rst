@@ -12,7 +12,6 @@ Table of Contents
 - `Installing Rocks Rolls <https://github.com/sdsc/cluster-guide/blob/master/InstallingRolls.rst>`_
 - `Testing Your Roll Installations <https://github.com/sdsc/cluster-guide/blob/master/RollTests.rst>`_
 - `Reinstalling Your Development Appliance <https://github.com/sdsc/cluster-guide/blob/master/ReinstallingDevel.rst>`_
-- `Installing Your Compute Nodes <https://github.com/sdsc/cluster-guide/blob/master/InstallingCompute.rst>`_
 
 Overview of Rocks Documentation
 ===============================

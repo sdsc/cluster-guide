@@ -18,4 +18,4 @@ Return to your Front End and remove the host so that it will reinstall upon boot
 
    rocks remove host devel-0-0
 
-Finally you may reinstall the node using the *insert ethers* method described in `Installing Your Development Appliance`_.  This method can also be used to reinstall any other type of node.
+Finally you may reinstall the node and yoru remaining nodes as compute nodes using the *insert ethers* method described in `Installing Your Development Appliance <https://github.com/sdsc/cluster-guide/blob/master/InstallingDevel.rst>`_.
