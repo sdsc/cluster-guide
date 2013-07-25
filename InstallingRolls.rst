@@ -25,8 +25,8 @@ Use a text editor such as `emacs` to create a `.sh` file for the bash script.  A
 
 Keep in mind that the second part of the ``git clone`` command in the for loop is the location which you are cloning the repo to.
 
-Rocks Rolls
-===========
+Compiling the Roll
+==================
 Typically the rolls that need to be installed manually are:
 
 *scar* *cmake* *mpi* *R* *fftw* *hdf* *math* *dataform*
@@ -58,6 +58,9 @@ If the ``make`` command created an ISO file successfully it should end off by sa
 You need to copy the *ISO* file from the development appliance over to your front end to set up the distribution.  Copy the ISOs to a direcory in your home directory::
 
    scp scar-6.1-0.x86_64.disk1.iso root@hpcdev-006:~/rolls_to_add/
+   
+Installing the Roll
+===================
 
 Go back to your front end and ``cd`` into the directory that you copied the ISO over to.  Once there use the following commands::
 
