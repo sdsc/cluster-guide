@@ -28,7 +28,7 @@ Installing Rocks
 ================
 Be aware that when the Rocks Installation boots, if you do not press any button the ``build`` command will automatically run without clarification of any of the options (you will be able to fill the options in during the installtion, but it is easier to input them as options of ``build``).  Boot to the media and do the ``build`` command::
 
-   build IP+192.168.117.5 netmask=255.255.255.128 dns=198.202.75.26 gateway=192.168.117.1
+   build IP=192.168.117.5 netmask=255.255.255.128 dns=198.202.75.26 gateway=192.168.117.1
 
    *The IP address is applied to the eth1 port*
 
