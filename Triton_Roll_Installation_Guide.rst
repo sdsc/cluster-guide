@@ -18,7 +18,6 @@ Table of Contents
 
 .. contents::
    :depth: 3
-   :backlinks: "entry"
    
 .. _overview:   
 Overview
