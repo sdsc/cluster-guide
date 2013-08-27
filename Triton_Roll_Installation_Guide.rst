@@ -137,6 +137,8 @@ NOTE: There are a number of user contributed rolls hosted from git.rocksclusters
       points for your own Roll development so they remain available.
 
 
+.. table:: Rolls Provided on the Rocks Public GitWeb Server
+
 ==============================  ==================================  ======================
 Project							Description							Last Change		
 ==============================  ==================================  ======================
