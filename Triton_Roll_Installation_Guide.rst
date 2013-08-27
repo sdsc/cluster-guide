@@ -106,15 +106,13 @@ NOTE: The definition of the Rocks Development Appliance is contained in the foll
 	
 
 To modify the configuration of the Rocks Development Appliance you should follow the 
-`customization sequences`_ described in the `Rocks User Guide`_
-
-.. _customization sequences: http://central6.rocksclusters.org/roll-documentation/base/6.1/customization.html
-
-with the following exceptions...
+`customization sequences`_ described in the `Rocks User Guide`_ with the following exceptions...
 
 - Where applicable you will copy skeleton.xml to extend-devel.xml
 - Rocks Development Appliances explicitly have autofs disabled so they will NOT
   have access to /share/apps
+
+.. _customization sequences: http://central6.rocksclusters.org/roll-documentation/base/6.1/customization.html
   
 
 .. _installing-triton-rolls:
