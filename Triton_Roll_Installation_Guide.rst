@@ -122,16 +122,6 @@ with the following exceptions...
 Installing Triton Rolls
 =======================
 
-.. ### Original Text Start ### 
-.. # Throughout this tutorial bare in mind that being in root is potentially dangerous to 
-.. # your system
-.. #
-.. # In order to avoid unnecessary reinstallations of your front end, please do all make 
-.. # commands for creating ISOs on the development appliance. This is to prevent any errors 
-.. # that may occur when creating the rolls from affecting your front end. You may always 
-.. # reinstall your nodes if an error were to occur.
-.. ### Original Text End ### 
-
 A copy of the Rocks source code, including the source code for the Triton rolls, is 
 currently hosted on a `public, read-only Gitweb server` which can be found at the following 
 URL...
@@ -614,7 +604,9 @@ Verify build completed without errors and produce one (or more) roll ISO files..
 Copy Triton Rolls to Frontend
 =============================
 
-::
+You will need to copy the `*.iso` files you just created for the Triton intel roll 
+onto your Rocks cluster frontend. The easiest way to do this is to use `scp` on your 
+frontend... ::
 
 	[root@frontend ~]# cd /export/apps/devel/rolls/
 	[root@frontend rolls]# scp "devel-0-0:/state/partition1/triton/intel/*.iso" .
@@ -633,7 +625,7 @@ Install the intel roll... ::
 	Copying intel to Rolls.....1083229 blocks
 	Copying intel to Rolls.....971659 blocks
 
-Enable the intel roll...::
+Enable the intel roll... ::
 
 	[root@frontend rolls]# rocks enable roll intel
 
@@ -694,13 +686,13 @@ Re-build the Rocks distribution... ::
 		 Calling Yum genpkgmetadata.py
 	Creating repository
 
-	iso-8859-1 encoding on Ville Skytt� <ville.skytta@iki.fi> - 2.8.2-2
+	iso-8859-1 encoding on Ville Skytt <ville.skytta@iki.fi> - 2.8.2-2
 
 		 Rebuilding Product Image including md5 sums
 		 Creating Directory Listing
 
 
-Verify package availability in Rocks distribution...::
+Verify package availability in Rocks distribution... ::
 
 	[root@frontend install]# yum clean all
 	Cleaning repos: Rocks-6.1
@@ -739,14 +731,14 @@ Verify package availability in Rocks distribution...::
 Test Triton Roll Installation on Frontend
 =========================================
 
-Install intel roll on frontend... ::
+Install Triton intel roll on frontend... ::
 
 	[root@frontend ~]# rocks run roll intel > rocks_run_roll_intel.sh
 	[root@frontend ~]# chmod +x rocks_run_roll_intel.sh
 	[root@frontend ~]# ./rocks_run_roll_intel.sh 2>&1 | tee rocks_run_roll_intel.sh.log
 	[root@frontend ~]# grep "[F|f]ailed" rocks_run_roll_intel.sh.log
 
-Verify installation of Intel compiler packages on frontend... ::
+Verify installation of Intel compiler packages on frontend using `yum`... ::
 
 	[root@frontend ~]# yum info intel-compilerproc-117-13.0 intel-compilerprof-117-13.0
 	Installed Packages
