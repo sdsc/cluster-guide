@@ -1,7 +1,7 @@
 .. 	These notes will address issues with various sections of the current cluster-guide
 	documents on github in the order they are presented.
 
-.. |Rocks (R)| unicode:: Rocks U+174
+.. |Rocks (R)| unicode:: Rocks &#174;
 
 Welcome to the Triton Roll Installation Guide!
 **********************************************
