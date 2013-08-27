@@ -8,7 +8,7 @@ Welcome to the Triton Roll Installation Guide!
 
 ..	Insert 'brief' description of this document.
 
-This guide will teach you how to safely build and deploy software on your |Rocks (R)| Cluster
+This guide will teach you how to safely build and deploy software on your Rocks (R) Cluster
 using Triton Rolls. The techniques described can be used once during initial installation
 but we recommend their use during the entire life of your |Rocks (R)| cluster.
 
