@@ -23,7 +23,7 @@ Table of Contents
 	- `Copy Triton Rolls to Frontend`_
 	- `Install Triton Rolls on Frontend`_
 	- `Test Triton Rolls Installation on Frontend`_
-	- `Install/Re-install Nodes`_
+	- `Install or Reinstall Nodes`_
 
 
 Overview
@@ -59,6 +59,7 @@ This guide assumes the following...
 - There is sufficient disk capacity on your Rocks Development Appliance to hold the roll 
   sources, compiled binaries (if/when necessary) and Triton rolls you wish to build.
 
+Go back to the `Table of Contents`_
 
 Installing Your Rocks Development Appliance
 ===========================================
@@ -108,7 +109,8 @@ To modify the configuration of the Rocks Development Appliance you should follow
   have access to /share/apps
 
 .. _customization sequences: http://central6.rocksclusters.org/roll-documentation/base/6.1/customization.html
-  
+
+Go back to the `Table of Contents`_
 
 Installing Triton Rolls
 =======================
@@ -273,8 +275,9 @@ The basic workflow for installing software using the Triton rolls is as follows.
 - `Copy Triton Rolls to Frontend`_
 - `Install Triton Rolls on Frontend`_
 - `Test Triton Rolls Installation on Frontend`_
-- `Install/Re-install Nodes`_
+- `Install or Reinstall Nodes`_
 
+Go back to the `Table of Contents`_
 
 Download Triton Rolls to Development Server
 -------------------------------------------
@@ -544,6 +547,7 @@ copied into the SRC directory during the roll build process...
 	intel-tbb-192-4.1-4.noarch.rpm
 	intel-tbb-devel-192-4.1-4.noarch.rpm
 	
+Go back to the `Table of Contents`_
 
 Build Triton Rolls on Development Server
 ----------------------------------------
@@ -590,6 +594,7 @@ Verify build completed without errors and produce one (or more) roll ISO files..
 	-rw-r--r-- 1 root root 555038720 Aug 22 10:34 intel-6.1-8.x86_64.disk1.iso
 	-rw-r--r-- 1 root root 497879040 Aug 22 10:34 intel-6.1-8.x86_64.disk2.iso
 
+Go back to the `Table of Contents`_
 
 Copy Triton Rolls to Frontend
 -----------------------------
@@ -605,6 +610,7 @@ frontend...
 	intel-6.1-8.x86_64.disk1.iso                        100%  529MB  52.9MB/s   00:10
 	intel-6.1-8.x86_64.disk2.iso                        100%  475MB  47.5MB/s   00:10
 
+Go back to the `Table of Contents`_
 
 Install Triton Rolls on Frontend
 --------------------------------
@@ -725,6 +731,8 @@ Verify package availability in Rocks distribution...
 	License     : Intel Copyright 1999-2012
 	Description : Intel(R) Fortran Compiler XE 13.0 Update 1 for Linux*
 
+Go back to the `Table of Contents`_
+
 
 Test Triton Rolls Installation on Frontend
 ------------------------------------------
@@ -784,9 +792,10 @@ Run the intel roll test script...
 	ok 11 - intel version module link created
 	1..11
 
+Go back to the `Table of Contents`_
 
-Install/Re-install Nodes
-------------------------
+Install or Reinstall Nodes
+--------------------------
 
 Now that the Triton intel roll has been installed and tested on your Rocks cluster 
 frontend you will need to install/re-install your cluster nodes that should have 
@@ -800,3 +809,5 @@ See the Rocks documentation for examples of how to re-install your cluster nodes
 .. _Rocks User Guide: http://central6.rocksclusters.org/roll-documentation/base/6.1/
 .. _Forcing a Re-install at Next PXE Boot: http://central6.rocksclusters.org/roll-documentation/base/6.1/x1817.html
 .. _Reinstall All Compute Nodes with SGE: http://central6.rocksclusters.org/roll-documentation/base/6.1/sge-cluster-reinstall.html
+
+Go back to the `Table of Contents`_
