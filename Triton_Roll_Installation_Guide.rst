@@ -16,7 +16,7 @@ but we recommend their use during the entire life of your Rocks cluster.
 Table of Contents
 =================
 
-.. contents:: ` `
+.. contents::
    :depth: 3
    
 .. _overview:   
