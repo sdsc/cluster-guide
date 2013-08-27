@@ -1,7 +1,7 @@
 .. 	These notes will address issues with various sections of the current cluster-guide
 	documents on github in the order they are presented.
 
-.. include:: <isonum.txt>
+.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
 
 Welcome to the Triton Roll Installation Guide!
 **********************************************
