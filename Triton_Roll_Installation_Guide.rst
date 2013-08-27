@@ -25,16 +25,6 @@ Table of Contents
 	- `Install Triton Roll(s) on Frontend`_
 	- `Test Triton Roll(s) Installation on Frontend`_
 	- `Install/Re-install Nodes`_
-   
-.. _Installing Your Rocks Development Appliance: installing-your-rocks-development-appliance_
-.. _Installing Triton Rolls: installing-triton-rolls_
-.. _Download Triton Roll(s) to Development Server: download-triton-rolls-to-development-server_
-.. _Build Triton Roll(s) on Development Server: build-triton-rolls-on-development-server_
-.. _Copy Triton Roll(s) to Frontend: copy-triton-rolls-to-frontend_
-.. _Install Triton Roll(s) on Frontend: install-triton-rolls-on-frontend_
-.. _Test Triton Roll(s) Installation on Frontend: test-triton-rolls-installation-on-frontend_
-.. _Install/Re-install Nodes: install-re-install-nodes_
-
 
 
 Overview
@@ -71,7 +61,6 @@ This guide assumes the following...
   sources, compiled binaries (if/when necessary) and Triton rolls you wish to build.
 
 
-.. _installing-your-rocks-development-appliance:
 Installing Your Rocks Development Appliance
 ===========================================
 
@@ -122,7 +111,6 @@ To modify the configuration of the Rocks Development Appliance you should follow
 .. _customization sequences: http://central6.rocksclusters.org/roll-documentation/base/6.1/customization.html
   
 
-.. _installing-triton-rolls:
 Installing Triton Rolls
 =======================
 
@@ -289,9 +277,8 @@ The basic workflow for installing software using the Triton rolls is as follows.
 - `Install/Re-install Nodes`_
 
 
-.. _download-triton-rolls-to-development-server:
-Download Triton Rolls to Development Server
--------------------------------------------
+Download Triton Roll(s) to Development Server
+---------------------------------------------
 
 In order to download Triton rolls directly to your Development Server (devel-0-0) your 
 frontend needs to have access to the public Internet*.
@@ -559,10 +546,8 @@ copied into the SRC directory during the roll build process...
 	intel-tbb-devel-192-4.1-4.noarch.rpm
 	
 
-
-.. _build-triton-rolls-on-development-server:
-Build Triton Rolls on Development Server
-----------------------------------------
+Build Triton Roll(s) on Development Server
+------------------------------------------
 
 Enter the roll source directory and make the Rocks distribution...
 
@@ -607,9 +592,8 @@ Verify build completed without errors and produce one (or more) roll ISO files..
 	-rw-r--r-- 1 root root 497879040 Aug 22 10:34 intel-6.1-8.x86_64.disk2.iso
 
 
-.. _copy-triton-rolls-to-frontend:
-Copy Triton Rolls to Frontend
------------------------------
+Copy Triton Roll(s) to Frontend
+-------------------------------
 
 You will need to copy the `*.iso` files you just created for the Triton intel roll 
 onto your Rocks cluster frontend. The easiest way to do this is to use `scp` on your 
@@ -623,9 +607,8 @@ frontend...
 	intel-6.1-8.x86_64.disk2.iso                        100%  475MB  47.5MB/s   00:10
 
 
-.. _install-triton-rolls-on-frontend:
-Install Triton Rolls on Frontend
---------------------------------
+Install Triton Roll(s) on Frontend
+----------------------------------
 
 Install the intel roll...
 
@@ -744,9 +727,8 @@ Verify package availability in Rocks distribution...
 	Description : Intel(R) Fortran Compiler XE 13.0 Update 1 for Linux*
 
 
-.. _test-triton-roll-installation-on-frontend:
-Test Triton Roll Installation on Frontend
------------------------------------------
+Test Triton Roll(s) Installation on Frontend
+--------------------------------------------
 
 Install Triton intel roll on frontend...
 
@@ -803,7 +785,7 @@ Run the intel roll test script...
 	ok 11 - intel version module link created
 	1..11
 
-.. _install-re-install-nodes:
+
 Install/Re-install Nodes
 ------------------------
 
