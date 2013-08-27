@@ -72,12 +72,11 @@ Rocks Development Appliance definition was added to Rocks in version 6 so you mu
 using Rocks 6.x or newer to follow this guide.
 
 Installation of a Rocks Development Appliance follows the `standard node installation 
-sequence`_ described in the `Rocks User Guide`_
+sequence`_ described in the `Rocks User Guide`_ with the exception that in step 2 you 
+will NOT select 'Compute' as your appliance type but you will instead select 
+'Development Appliance' as your appliance type.
 
 .. _standard node installation sequence: http://central6.rocksclusters.org/roll-documentation/base/6.1/install-compute-nodes.html
-
-with the exception that in step 2 you will NOT select 'Compute' as your appliance type 
-but you will instead select 'Development Appliance' as your appliance type.
 
 .. insert-ethers-devel-001.png
 
@@ -135,7 +134,6 @@ published Triton rolls.
 NOTE: There are a number of user contributed rolls hosted from git.rocksclusters.org.
       These rolls are now deprecated but may provide useful examples and/or starting
       points for your own Roll development so they remain available.
-
 
 .. table:: Rolls Provided on the Rocks Public GitWeb Server
 
