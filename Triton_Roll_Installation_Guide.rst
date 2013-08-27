@@ -94,7 +94,7 @@ the node as root.
 	Kickstarted 10:29 20-Aug-2013
 	[root@devel-server-0-0 ~]#
 
-NOTE: The definition of the Rocks Development Appliance is contained in the following file(s)...
+*NOTE: The definition of the Rocks Development Appliance is contained in the following file(s)...*
 
 ::
       
