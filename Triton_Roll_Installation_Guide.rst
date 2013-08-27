@@ -82,7 +82,9 @@ but you will instead select 'Development Appliance' as your appliance type.
 .. [insert-ethers-devel-001.png]
 
 Once devel-server-0-0 has completed installation you should verify that you can login to 
-the node as root.::
+the node as root.
+
+::
 
 	[root@frontend ~]# ssh devel-server-0-0
 	Last login: Tue Aug 20 10:31:51 2013 from frontend.local
@@ -94,7 +96,9 @@ the node as root.::
 	[root@devel-server-0-0 ~]#
 
 NOTE: The definition of the Rocks Development Appliance is contained in the following
-      file(s)... ::
+      file(s)...
+
+::
       
 	[root@frontend ~]# ls -l /export/rocks/install/rocks-dist/x86_64/build/nodes/devel*
 	-rw-r--r-- 1 root root 2840 Mar  6 22:39 /export/rocks/install/rocks-dist/x86_64/build/nodes/devel-appliance.xml
@@ -397,7 +401,9 @@ When triton_repo_script.sh finishes running you should have a complete copy of t
 published Triton roll source(s) in /state/partition1/triton and you can move on to the 
 next step of this documentation.
 
-For example... ::
+For example...
+
+::
 
 	[root@devel-0-0 ~]# tree /state/partition1/triton
 
@@ -509,15 +515,19 @@ in the file, intel/nodes/intel-compilers-common.xml. ::
 	<package>intel-mkl-common-117</package>
 	<package>intel-sourcechecker-common-117</package>
 	<package>intel-tbb-117</package>
-	<package>intel-tbb-devel-117</package>
+	<package>intel-tbb-devel-117</package> 
 
-	* 
-	*   
-
-The latest Intel C++/Fortran Compilers as of the date of this document are... ::
+The latest Intel C++/Fortran Compilers as of the date of this document are...
+-----------------------------------------------------------------------------
+::
 
 	l_ccompxe_2013.5.192.tgz  Update 5  07 Jun 2013
 	l_fcompxe_2013.5.192.tgz  Update 5  07 Jun 2013
+
+The Intel compiler packages contain the following RPM's which will be extracted and 
+copied into the SRC directory during the roll build process...
+
+::
 
 	intel-compilerpro-devel-192-13.1-5.x86_64.rpm
 	intel-compilerproc-192-13.1-5.x86_64.rpm
@@ -545,16 +555,16 @@ The latest Intel C++/Fortran Compilers as of the date of this document are... ::
 	intel-tbb-192-4.1-4.noarch.rpm
 	intel-tbb-devel-192-4.1-4.noarch.rpm
 	
-* - It is possible to download the Triton rolls from a cluster without access to the 
-public Internet but the explanation of that process is beyond the scope of this 
-documentation.
 
 
 .. _build-triton-rolls-on-development-server:
 Build Triton Rolls on Development Server
-=========================================
+========================================
 
-Enter the roll source directory and ::
+Enter the roll source directory and make the Rocks distribution...
+------------------------------------------------------------------
+
+::
 
 	[root@devel-0-0 ~]# cd /state/partition1/triton/intel
 
@@ -586,7 +596,10 @@ Enter the roll source directory and ::
 	Creating disk2 (474.44MB)...  This disk is optional (extra rpms)
 	Building ISO image for disk2 ...
 
-Verify build completed without errors and produce one (or more) roll ISO files... ::
+Verify build completed without errors and produce one (or more) roll ISO files...
+---------------------------------------------------------------------------------
+
+::
 
 	[root@devel-0-0 intel]# ls -l *.iso && grep "build err" build.log
 	-rw-r--r-- 1 root root 555038720 Aug 22 10:34 intel-6.1-8.x86_64.disk1.iso
@@ -599,7 +612,9 @@ Copy Triton Rolls to Frontend
 
 You will need to copy the `*.iso` files you just created for the Triton intel roll 
 onto your Rocks cluster frontend. The easiest way to do this is to use `scp` on your 
-frontend... ::
+frontend...
+
+::
 
 	[root@frontend ~]# cd /export/apps/devel/rolls/
 	[root@frontend rolls]# scp "devel-0-0:/state/partition1/triton/intel/*.iso" .
@@ -611,23 +626,35 @@ frontend... ::
 Install Triton Rolls on Frontend
 ================================
 
-Install the intel roll... ::
+Install the intel roll...
+-------------------------
+
+::
 
 	[root@frontend rolls]# rocks add roll intel-6.1-8.x86_64.disk1.iso intel-6.1-8.x86_64.disk2.iso
 	Copying intel to Rolls.....1083229 blocks
 	Copying intel to Rolls.....971659 blocks
 
-Enable the intel roll... ::
+Enable the intel roll...
+------------------------
+
+::
 
 	[root@frontend rolls]# rocks enable roll intel
 
-Verify the intel roll... ::
+Verify the intel roll...
+------------------------
+
+::
 
 	[root@frontend rolls]# rocks list roll intel
 	NAME   VERSION ARCH   ENABLED
 	intel: 6.1     x86_64 yes
 
-Re-build the Rocks distribution... ::
+Re-build the Rocks distribution...
+----------------------------------
+
+::
 
 	[root@frontend ~]# cd /export/rocks/install
 	Cleaning distribution
@@ -684,7 +711,10 @@ Re-build the Rocks distribution... ::
 		 Creating Directory Listing
 
 
-Verify package availability in Rocks distribution... ::
+Verify package availability in Rocks distribution...
+----------------------------------------------------
+
+::
 
 	[root@frontend install]# yum clean all
 	Cleaning repos: Rocks-6.1
@@ -732,8 +762,8 @@ Install Triton intel roll on frontend...
 	[root@frontend ~]# ./rocks_run_roll_intel.sh 2>&1 | tee rocks_run_roll_intel.sh.log
 	[root@frontend ~]# grep "[F|f]ailed" rocks_run_roll_intel.sh.log
 
-Verify installation of Intel compiler packages on frontend
-----------------------------------------------------------
+Verify installation of Intel compiler packages on frontend...
+-------------------------------------------------------------
 
 ::
  
