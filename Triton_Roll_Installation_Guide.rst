@@ -16,19 +16,7 @@ but we recommend their use during the entire life of your Rocks cluster.
 Table of Contents
 =================
 
-- :ref:`table-of-contents`
-- :ref:`overview`
-- :ref:`installing-your-rocks-development-appliance`
-- :ref:`installing-triton-rolls`
-- :ref:`download-triton-rolls-to-development-server`
-- :ref:`build-triton-rolls-on-development-server`
-- :ref:`copy-triton-rolls-to-frontend`
-- :ref:`install-triton-rolls-on-frontend`
-- :ref:`test-triton-roll-installation-on-frontend`
-- :ref:`install-re-install-nodes`
-
-
-.. contents:: :depth: 3
+.. contents:: :depth: 2
 
 .. _overview:
 Overview
