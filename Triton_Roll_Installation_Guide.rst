@@ -119,7 +119,7 @@ Installing Triton Rolls
 =======================
 
 A copy of the Rocks source code, including the source code for the Triton rolls, is 
-currently hosted on a `public Gitweb server`.
+currently hosted on a `public Gitweb server`_.
 
 .. _public Gitweb server: http://git.rocksclusters.org/cgi-bin/gitweb.cgi
 
