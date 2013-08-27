@@ -722,15 +722,21 @@ Verify package availability in Rocks distribution... ::
 Test Triton Roll Installation on Frontend
 =========================================
 
-Install Triton intel roll on frontend... ::
+Install Triton intel roll on frontend...
+----------------------------------------
+
+::
 
 	[root@frontend ~]# rocks run roll intel > rocks_run_roll_intel.sh
 	[root@frontend ~]# chmod +x rocks_run_roll_intel.sh
 	[root@frontend ~]# ./rocks_run_roll_intel.sh 2>&1 | tee rocks_run_roll_intel.sh.log
 	[root@frontend ~]# grep "[F|f]ailed" rocks_run_roll_intel.sh.log
 
-Verify installation of Intel compiler packages on frontend using `yum`... ::
+Verify installation of Intel compiler packages on frontend
+----------------------------------------------------------
 
+::
+ 
 	[root@frontend ~]# yum info intel-compilerproc-117-13.0 intel-compilerprof-117-13.0
 	Installed Packages
 	Name        : intel-compilerproc-117
@@ -755,7 +761,10 @@ Verify installation of Intel compiler packages on frontend using `yum`... ::
 	License     : Intel Copyright 1999-2012
 	Description : Intel(R) Fortran Compiler XE 13.0 Update 1 for Linux*
 
-Run the intel roll test script... ::
+Run the intel roll test script...
+---------------------------------
+
+::
 
 	[root@frontend ~]# /root/rolltests/intel.t
 	ok 1 - intel compilers installed
