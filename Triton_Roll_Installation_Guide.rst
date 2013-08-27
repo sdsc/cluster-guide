@@ -1,7 +1,6 @@
 .. 	These notes will address issues with various sections of the current cluster-guide
 	documents on github in the order they are presented.
 
-.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
 
 Welcome to the Triton Roll Installation Guide!
 **********************************************
@@ -10,7 +9,7 @@ Welcome to the Triton Roll Installation Guide!
 
 This guide will teach you how to safely build and deploy software on your Rocks|reg| Cluster
 using Triton Rolls. The techniques described can be used once during initial installation
-but we recommend their use during the entire life of your Rocks |reg| cluster.
+but we recommend their use during the entire life of your Rocks cluster.
 
 
 Table of Contents
@@ -20,7 +19,7 @@ Table of Contents
    to the TOC after each section.
 
 - `Overview`_
-- `Installing Your |Rocks (R)| Development Appliance`_
+- `Installing Your Rocks Development Appliance`_
 - `Installing Triton Rolls`_
 	- `Download Triton Rolls to Development Server`_
 	- `Build Triton Rolls on Development Server`_
@@ -35,45 +34,45 @@ Overview
 
 ..	This guide 'should' be a guide to get/build/use SDSC Triton software rolls to
 	customize an already installed cluster. It is NOT a basic cluster installation guide.
-	That topic is covered completely in the standard |Rocks (R)| documentation and those steps
+	That topic is covered completely in the standard Rocks documentation and those steps
 	should only be referenced in this guide.
 
 In this guide you will learn how to download, build and deploy software to your running
-|Rocks (R)| cluster using a |Rocks (R)| Development Appliance. Ideally, you will begin using this
+Rocks cluster using a Rocks Development Appliance. Ideally, you will begin using this
 guide during your initial cluster install, however it is possible to use this guide after
 you have begun using your cluster as long as you can meet a few basic requirements.
 
 This guide describes the use of publicly available rolls developed for the UC San Diego
 Triton cluster. The Triton cluster was in production at UC San Diego from October, 2009
-through June 2013 and ran |Rocks (R)| 5.4. As a result, the rolls we will be building are named
+through June 2013 and ran Rocks 5.4. As a result, the rolls we will be building are named
 'Triton Rolls'.
 
 Recently, the Triton cluster was decommissioned and replaced by the UC San Diego Triton
 Shared Compute Cluster (TSCC) which went into production in May, 2013. The UC San Diego
-TSCC cluster is currently running |Rocks (R)| 6.1 and has many of the Triton rolls built and
+TSCC cluster is currently running Rocks 6.1 and has many of the Triton rolls built and
 installed using the steps described in this guide. 
 
 This guide assumes the following...
 
-- |Rocks (R)| 6.1 (or later) is installed on your cluster frontend 
+- Rocks 6.1 (or later) is installed on your cluster frontend 
 - You are able to login to your cluster frontend as root 
 - The cluster private network is correctly cabled and configured 
 - The cluster frontend can access the public Internet 
-- You have a node that you can install as a |Rocks (R)| Development Appliance 
-- There is sufficient disk capacity on your |Rocks (R)| Development Appliance to hold the roll 
+- You have a node that you can install as a Rocks Development Appliance 
+- There is sufficient disk capacity on your Rocks Development Appliance to hold the roll 
   sources, compiled binaries (if/when necessary) and Triton rolls you wish to build.
 
 Go back to the `Table of Contents`_
 
-Installing Your |Rocks (R)| Development Appliance
+Installing Your Rocks Development Appliance
 ===========================================
 
-This guide uses a |Rocks (R)| Development Appliance to build Triton rolls from roll source. The 
-|Rocks (R)| Development Appliance definition was added to |Rocks (R)| in version 6 so you must be
-using |Rocks (R)| 6.x or newer to follow this guide.
+This guide uses a Rocks Development Appliance to build Triton rolls from roll source. The 
+Rocks Development Appliance definition was added to Rocks in version 6 so you must be
+using Rocks 6.x or newer to follow this guide.
 
-Installation of a |Rocks (R)| Development Appliance follows the `standard node installation 
-sequence`_ described in the `|Rocks (R)| User Guide`_ with the exception that in step 2 you 
+Installation of a Rocks Development Appliance follows the `standard node installation 
+sequence`_ described in the `Rocks User Guide`_ with the exception that in step 2 you 
 will NOT select 'Compute' as your appliance type but you will instead select 
 'Development Appliance' as your appliance type.
 
@@ -88,14 +87,14 @@ the node as root.
 
 	[root@frontend ~]# ssh devel-server-0-0
 	Last login: Tue Aug 20 10:31:51 2013 from frontend.local
-	|Rocks (R)| 6.1 Development Server
-	|Rocks (R)| 6.1 (Emerald Boa)
+	Rocks 6.1 Development Server
+	Rocks 6.1 (Emerald Boa)
 	Profile built 10:23 20-Aug-2013
 
 	Kickstarted 10:29 20-Aug-2013
 	[root@devel-server-0-0 ~]#
 
-**NOTE: The definition of the |Rocks (R)| Development Appliance is contained in the following file(s)...**
+**NOTE: The definition of the Rocks Development Appliance is contained in the following file(s)...**
 
 ::
       
@@ -105,11 +104,11 @@ the node as root.
 	-rw-r--r-- 1 root root 1039 Mar  6 22:39 /export/rocks/install/rocks-dist/x86_64/build/nodes/devel.xml
 	
 
-To modify the configuration of the |Rocks (R)| Development Appliance you should follow the 
-`customization sequences`_ described in the `|Rocks (R)| User Guide`_ with the following exceptions...
+To modify the configuration of the Rocks Development Appliance you should follow the 
+`customization sequences`_ described in the `Rocks User Guide`_ with the following exceptions...
 
 - Where applicable you will copy skeleton.xml to extend-devel.xml
-- |Rocks (R)| Development Appliances explicitly have autofs disabled so they will NOT
+- Rocks Development Appliances explicitly have autofs disabled so they will NOT
   have access to /share/apps
 
 .. _customization sequences: http://central6.rocksclusters.org/roll-documentation/base/6.1/customization.html
@@ -119,13 +118,13 @@ Go back to the `Table of Contents`_
 Installing Triton Rolls
 =======================
 
-A copy of the |Rocks (R)| source code, including the source code for the Triton rolls, is
+A copy of the Rocks source code, including the source code for the Triton rolls, is
 currently hosted on a `public Gitweb server`_.
 
 .. _public Gitweb server: http://git.rocksclusters.org/cgi-bin/gitweb.cgi
 
-Included in this repository is the historic source for the entire |Rocks (R)| software stack, a
-mirror of the current |Rocks (R)| software stack now published to GitHub and all of the
+Included in this repository is the historic source for the entire Rocks software stack, a
+mirror of the current Rocks software stack now published to GitHub and all of the
 published Triton rolls.
 
 Eventually the Triton rolls will also be published to GitHub and this repository will
@@ -155,7 +154,7 @@ Triton rolls to devel-0-0...
 
 	#!/bin/bash
 	# This script will use 'git clone' to create a local copy of the Triton roll
-	# source(s) on git.rocksclusters.org on your |Rocks (R)| Development Appliance.
+	# source(s) on git.rocksclusters.org on your Rocks Development Appliance.
 	#
 
 	# TODO: Source is currently the git.rocksclusters.org Gitweb repository. It
@@ -419,7 +418,7 @@ Go back to the `Table of Contents`_
 Build Triton Rolls on Development Server
 ----------------------------------------
 
-Enter the roll source directory and make the |Rocks (R)| distribution...
+Enter the roll source directory and make the Rocks distribution...
 
 ::
 
@@ -443,7 +442,7 @@ Enter the roll source directory and make the |Rocks (R)| distribution...
 	.
 	.
 	.
-			|Rocks (R)| create roll roll-intel.xml
+			Rocks create roll roll-intel.xml
 	intel-roll-test-1-8: 0fb2b149e7c51bedfc91d01f134eb780
 	roll-intel-kickstart-6.1-8: fdf87c4fdd22ba4dd8c10c7ac9c9664f
 	intel-compilers-2013.1.117-8: 5fe6c0a2354c13fc6c27bf49cfb9eeb3
@@ -467,7 +466,7 @@ Copy Triton Rolls to Frontend
 -----------------------------
 
 You will need to copy the `*.iso` files you just created for the Triton intel roll onto
-your |Rocks (R)| cluster frontend. The easiest way to do this is to use `scp` on your frontend...
+your Rocks cluster frontend. The easiest way to do this is to use `scp` on your frontend...
 
 ::
 
@@ -485,7 +484,7 @@ Install the intel roll...
 
 ::
 
-	[root@frontend rolls]# |Rocks (R)| add roll intel-6.1-8.x86_64.disk1.iso intel-6.1-8.x86_64.disk2.iso
+	[root@frontend rolls]# Rocks add roll intel-6.1-8.x86_64.disk1.iso intel-6.1-8.x86_64.disk2.iso
 	Copying intel to Rolls.....1083229 blocks
 	Copying intel to Rolls.....971659 blocks
 
@@ -493,17 +492,17 @@ Enable the intel roll...
 
 ::
 
-	[root@frontend rolls]# |Rocks (R)| enable roll intel
+	[root@frontend rolls]# Rocks enable roll intel
 
 Verify the intel roll...
 
 ::
 
-	[root@frontend rolls]# |Rocks (R)| list roll intel
+	[root@frontend rolls]# Rocks list roll intel
 	NAME   VERSION ARCH   ENABLED
 	intel: 6.1     x86_64 yes
 
-Re-build the |Rocks (R)| distribution...
+Re-build the Rocks distribution...
 
 ::
 
@@ -562,7 +561,7 @@ Re-build the |Rocks (R)| distribution...
 		 Creating Directory Listing
 
 
-Verify package availability in |Rocks (R)| distribution...
+Verify package availability in Rocks distribution...
 
 ::
 
@@ -607,7 +606,7 @@ Install Triton intel roll on frontend...
 
 ::
 
-	[root@frontend ~]# |Rocks (R)| run roll intel > rocks_run_roll_intel.sh
+	[root@frontend ~]# Rocks run roll intel > rocks_run_roll_intel.sh
 	[root@frontend ~]# chmod +x rocks_run_roll_intel.sh
 	[root@frontend ~]# ./rocks_run_roll_intel.sh 2>&1 | tee rocks_run_roll_intel.sh.log
 	[root@frontend ~]# grep "[F|f]ailed" rocks_run_roll_intel.sh.log
@@ -663,16 +662,16 @@ Go back to the `Table of Contents`_
 Install or Reinstall Nodes
 --------------------------
 
-Now that the Triton intel roll has been installed and tested on your |Rocks (R)| cluster
+Now that the Triton intel roll has been installed and tested on your Rocks cluster
 frontend you will need to install/re-install your cluster nodes that should have access to
 the Intel compilers which are part of the newly added Triton intel roll.
 
-See the |Rocks (R)| documentation for examples of how to re-install your cluster nodes...
+See the Rocks documentation for examples of how to re-install your cluster nodes...
 
 - `Forcing a Re-install at Next PXE Boot`_
 - `Reinstall All Compute Nodes with SGE`_
 
-.. _|Rocks (R)| User Guide: http://central6.rocksclusters.org/roll-documentation/base/6.1/
+.. _Rocks User Guide: http://central6.rocksclusters.org/roll-documentation/base/6.1/
 .. _Forcing a Re-install at Next PXE Boot: http://central6.rocksclusters.org/roll-documentation/base/6.1/x1817.html
 .. _Reinstall All Compute Nodes with SGE: http://central6.rocksclusters.org/roll-documentation/base/6.1/sge-cluster-reinstall.html
 
