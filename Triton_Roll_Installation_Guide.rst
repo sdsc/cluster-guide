@@ -13,7 +13,6 @@ but we recommend their use during the entire life of your Rocks cluster.
 
 
 .. _table-of-contents:
-=================
 Table of Contents
 =================
 
@@ -30,7 +29,6 @@ Table of Contents
 
 
 .. _overview:
-========
 Overview
 ========
 
@@ -66,7 +64,6 @@ This guide assumes the following...
 
 
 .. _installing-your-rocks-development-appliance:
-===========================================
 Installing Your Rocks Development Appliance
 ===========================================
 
@@ -118,7 +115,6 @@ with the following exceptions...
   
 
 .. _installing-triton-rolls:
-=======================
 Installing Triton Rolls
 =======================
 
@@ -294,7 +290,6 @@ The basic workflow for installing software using the Triton rolls is as follows.
 
 
 .. _download-triton-rolls-to-development-server:
-===========================================
 Download Triton Rolls to Development Server
 ===========================================
 
@@ -556,7 +551,6 @@ documentation.
 
 
 .. _build-triton-rolls-on-development-server:
-=========================================
 Build Triton Rolls on Development Server
 =========================================
 
@@ -600,7 +594,6 @@ Verify build completed without errors and produce one (or more) roll ISO files..
 
 
 .. _copy-triton-rolls-to-frontend:
-=============================
 Copy Triton Rolls to Frontend
 =============================
 
@@ -615,7 +608,6 @@ frontend... ::
 
 
 .. _install-triton-rolls-on-frontend:
-================================
 Install Triton Rolls on Frontend
 ================================
 
@@ -727,7 +719,6 @@ Verify package availability in Rocks distribution... ::
 
 
 .. _test-triton-roll-installation-on-frontend:
-=========================================
 Test Triton Roll Installation on Frontend
 =========================================
 
@@ -781,7 +772,6 @@ Run the intel roll test script... ::
 	1..11
 
 .. _install-re-install-nodes:
-========================
 Install/Re-install Nodes
 ========================
 
