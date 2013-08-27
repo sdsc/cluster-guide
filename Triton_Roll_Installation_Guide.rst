@@ -90,7 +90,7 @@ the node as root.
 	Kickstarted 10:29 20-Aug-2013
 	[root@devel-server-0-0 ~]#
 
-*NOTE: The definition of the Rocks Development Appliance is contained in the following file(s)...*
+**NOTE: The definition of the Rocks Development Appliance is contained in the following file(s)...**
 
 ::
       
@@ -122,7 +122,7 @@ Included in this repository is the historic source for the entire Rocks software
 a mirror of the current Rocks software stack now published to GitHub and all of the 
 published Triton rolls.
 
-NOTE: There are a number of user contributed rolls hosted from git.rocksclusters.org. These rolls are now deprecated but may provide useful examples and/or starting points for your own Roll development so they remain available.
+**NOTE: There are a number of user contributed rolls hosted from git.rocksclusters.org. These rolls are now deprecated but may provide useful examples and/or starting points for your own Roll development so they remain available.**
 
 .. csv-table:: Rolls Provided on the Rocks Public GitWeb Server
    :header: "Project", "Description", "Last Change"
