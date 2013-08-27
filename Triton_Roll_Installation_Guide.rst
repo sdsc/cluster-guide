@@ -16,9 +16,11 @@ but we recommend their use during the entire life of your Rocks cluster.
 Table of Contents
 =================
 
-.. contents:: :local: :depth: 3
-
-.. _overview:
+.. contents::
+   :depth: 3
+   :backlinks: "entry"
+   
+.. _overview:   
 Overview
 ========
 
