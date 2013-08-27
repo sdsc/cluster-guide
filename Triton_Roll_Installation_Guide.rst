@@ -15,6 +15,9 @@ but we recommend their use during the entire life of your Rocks cluster.
 Table of Contents
 =================
 
+.. This is a manual TOC since I don't want the embedded title and I want to link back
+   to the TOC after each section.
+
 - `Overview`_
 - `Installing Your Rocks Development Appliance`_
 - `Installing Triton Rolls`_
@@ -29,24 +32,24 @@ Table of Contents
 Overview
 ========
 
-..	This guide 'should' be a guide to get/build/use SDSC Triton software rolls to customize 
-	an already installed cluster. It is NOT a basic cluster installation guide. That is 
-	covered completely in the standard Rocks documentation and those steps should only be 
-	referenced in this guide.
+..	This guide 'should' be a guide to get/build/use SDSC Triton software rolls to
+	customize an already installed cluster. It is NOT a basic cluster installation guide.
+	That topic is covered completely in the standard Rocks documentation and those steps
+	should only be referenced in this guide.
 
-In this guide you will learn how to download, build and deploy software to your running 
-Rocks cluster using a Rocks Development Appliance. Ideally, you will begin using this 
-guide during your initial cluster install, however it is possible to use this guide after 
+In this guide you will learn how to download, build and deploy software to your running
+Rocks cluster using a Rocks Development Appliance. Ideally, you will begin using this
+guide during your initial cluster install, however it is possible to use this guide after
 you have begun using your cluster as long as you can meet a few basic requirements.
 
-This guide describes the use of publicly available rolls developed for the UC San Diego 
-Triton cluster. The Triton cluster was in production at UC San Diego from October, 2009 
-through June 2013 and ran Rocks 5.4. As a result, the rolls we will be building are named 
+This guide describes the use of publicly available rolls developed for the UC San Diego
+Triton cluster. The Triton cluster was in production at UC San Diego from October, 2009
+through June 2013 and ran Rocks 5.4. As a result, the rolls we will be building are named
 'Triton Rolls'.
 
-Recently, the Triton cluster was decommissioned and replaced by the UC San Diego Triton 
-Shared Compute Cluster (TSCC) which went into production in May, 2013. The UC San Diego 
-TSCC cluster is currently running Rocks 6.1 and has many of the Triton rolls built and 
+Recently, the Triton cluster was decommissioned and replaced by the UC San Diego Triton
+Shared Compute Cluster (TSCC) which went into production in May, 2013. The UC San Diego
+TSCC cluster is currently running Rocks 6.1 and has many of the Triton rolls built and
 installed using the steps described in this guide. 
 
 This guide assumes the following...
@@ -115,16 +118,16 @@ Go back to the `Table of Contents`_
 Installing Triton Rolls
 =======================
 
-A copy of the Rocks source code, including the source code for the Triton rolls, is 
+A copy of the Rocks source code, including the source code for the Triton rolls, is
 currently hosted on a `public Gitweb server`_.
 
 .. _public Gitweb server: http://git.rocksclusters.org/cgi-bin/gitweb.cgi
 
-Included in this repository is the historic source for the entire Rocks software stack, 
-a mirror of the current Rocks software stack now published to GitHub and all of the 
+Included in this repository is the historic source for the entire Rocks software stack, a
+mirror of the current Rocks software stack now published to GitHub and all of the
 published Triton rolls.
 
-Eventually the Triton rolls will also be published to GitHub and this repository will 
+Eventually the Triton rolls will also be published to GitHub and this repository will
 remain for archival purposes only.
 
 The basic workflow for installing software using the Triton rolls is as follows...
@@ -141,11 +144,11 @@ Go back to the `Table of Contents`_
 Download Triton Rolls to Development Server
 -------------------------------------------
 
-In order to download Triton rolls directly to your Development Server (devel-0-0) your 
+In order to download Triton rolls directly to your Development Server (devel-0-0) your
 frontend needs to have access to the public Internet*.
 
-A script is being provided with this documentation that can be used to download all of 
-the Triton rolls to devel-0-0... ::
+A script is being provided with this documentation that can be used to download all of the
+Triton rolls to devel-0-0... ::
 
 	#!/bin/bash
 	# This script will use 'git clone' to create a local copy of the Triton roll
@@ -194,8 +197,8 @@ the Triton rolls to devel-0-0... ::
 	  git clone $SRC"/"$repo"/.git" $DST"/"$repo
 	done
 
-Create a file on devel-0-0 and copy the above script into it. Make it executable and then 
-run the script to pull the Triton roll source(s) onto your devel-0-0 node. Here is sample 
+Create a file on devel-0-0 and copy the above script into it. Make it executable and then
+run the script to pull the Triton roll source(s) onto your devel-0-0 node. Here is sample
 output from running triton_repo_script.sh ::
 
 	[root@devel-0-0 partition1]# ./triton_repo_script.sh
@@ -241,8 +244,8 @@ output from running triton_repo_script.sh ::
 	Cloning into '/state/partition1/triton/triton-config'...
 	Cloning into '/state/partition1/triton/valgrind'...
 
-When triton_repo_script.sh finishes running you should have a complete copy of the 
-published Triton roll source(s) in /state/partition1/triton and you can move on to the 
+When triton_repo_script.sh finishes running you should have a complete copy of the
+published Triton roll source(s) in /state/partition1/triton and you can move on to the
 next step of this documentation.
 
 For example...
@@ -294,17 +297,17 @@ For example...
 	`-- valgrind
 
 
-Some of the Triton rolls are created for software with restricted re-distribution 
-policies. The content of these rolls is not complete unless/until the software 
-vendor is contacted and the missing pieces are obtained directly.
+Some of the Triton rolls are created for software with restricted re-distribution
+policies. The content of these rolls is not complete unless/until the software vendor is
+contacted and the missing pieces are obtained directly.
 
-The Triton rolls that are affected by this contain a file named PROTECTED in the 
-roll source directory. 
+The Triton rolls that are affected by this contain a file named PROTECTED in the roll
+source directory.
 
-For example, the Triton roll for the Intel C++ and Fortran Compilers and related 
-development tools does not include the binaries or a license file since this 
-software requires an contract/agreement with Intel to obtain the installer packages 
-and a valid software license.
+For example, the Triton roll for the Intel C++ and Fortran Compilers and related
+development tools does not include the binaries or a license file since this software
+requires an contract/agreement with Intel to obtain the installer packages and a valid
+software license.
 
 ::
        
@@ -314,17 +317,17 @@ and a valid software license.
 	[root@devel-0-0 triton]# ls intel/src/intel-compilers
 	Makefile  version.mk
 
-The Intel C++ and Fortan compiler packages must be obtained directly from Intel and 
-added to the Triton roll source for the intel roll before the roll can be built. 
-The Intel compiler binaries can be obtained from the `Intel Developer Zone`_ website.
+The Intel C++ and Fortan compiler packages must be obtained directly from Intel and added
+to the Triton roll source for the intel roll before the roll can be built. The Intel
+compiler binaries can be obtained from the `Intel Developer Zone`_ website.
 
 .. _Intel Developer Zone: http://software.intel.com/en-us/
 
-Once the Intel compiler binaries have been obtained and the required file(s) 
-placed into the Triton roll source directory then the intel roll can be built.
+Once the Intel compiler binaries have been obtained and the required file(s) placed into
+the Triton roll source directory then the intel roll can be built.
 
-The Triton roll is expecting Intel C++/Fortran Compilers found in the following 
-Intel downloads...
+The Triton roll is expecting Intel C++/Fortran Compilers found in the following Intel
+downloads...
 
 ::
       
@@ -333,11 +336,11 @@ Intel downloads...
 	SOURCEC		= l_ccompxe_$(VERSION)
 	SOURCEF		= l_fcompxe_$(VERSION)
 
-On the Intel Developer Zone website these compilers are part of the Intel Composer 
-XE Suite, Update 1 from 10-Oct-2012.
+On the Intel Developer Zone website these compilers are part of the Intel Composer XE
+Suite, Update 1 from 10-Oct-2012.
 
-A list of Intel compiler packages expected by the Triton intel roll can be found 
-in the file, intel/nodes/intel-compilers-common.xml.
+A list of Intel compiler packages expected by the Triton intel roll can be found in the
+file, intel/nodes/intel-compilers-common.xml.
 
 ::
 
@@ -458,9 +461,8 @@ Go back to the `Table of Contents`_
 Copy Triton Rolls to Frontend
 -----------------------------
 
-You will need to copy the `*.iso` files you just created for the Triton intel roll 
-onto your Rocks cluster frontend. The easiest way to do this is to use `scp` on your 
-frontend...
+You will need to copy the `*.iso` files you just created for the Triton intel roll onto
+your Rocks cluster frontend. The easiest way to do this is to use `scp` on your frontend...
 
 ::
 
@@ -656,9 +658,9 @@ Go back to the `Table of Contents`_
 Install or Reinstall Nodes
 --------------------------
 
-Now that the Triton intel roll has been installed and tested on your Rocks cluster 
-frontend you will need to install/re-install your cluster nodes that should have 
-access to the Intel compilers which are part of the newly added Triton intel roll.
+Now that the Triton intel roll has been installed and tested on your Rocks cluster
+frontend you will need to install/re-install your cluster nodes that should have access to
+the Intel compilers which are part of the newly added Triton intel roll.
 
 See the Rocks documentation for examples of how to re-install your cluster nodes...
 
