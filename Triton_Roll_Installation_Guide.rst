@@ -74,12 +74,12 @@ using Rocks 6.x or newer to follow this guide.
 Installation of a Rocks Development Appliance follows the `standard node installation 
 sequence`_ described in the `Rocks User Guide`_
 
-.. standard node installation sequence: http://central6.rocksclusters.org/roll-documentation/base/6.1/install-compute-nodes.html
+.. _standard node installation sequence: http://central6.rocksclusters.org/roll-documentation/base/6.1/install-compute-nodes.html
 
 with the exception that in step 2 you will NOT select 'Compute' as your appliance type 
 but you will instead select 'Development Appliance' as your appliance type.
 
-.. [insert-ethers-devel-001.png]
+.. insert-ethers-devel-001.png
 
 Once devel-server-0-0 has completed installation you should verify that you can login to 
 the node as root.
@@ -109,7 +109,7 @@ NOTE: The definition of the Rocks Development Appliance is contained in the foll
 To modify the configuration of the Rocks Development Appliance you should follow the 
 `customization sequences`_ described in the `Rocks User Guide`_
 
-.. customization sequences: http://central6.rocksclusters.org/roll-documentation/base/6.1/customization.html
+.. _customization sequences: http://central6.rocksclusters.org/roll-documentation/base/6.1/customization.html
 
 with the following exceptions...
 
@@ -126,7 +126,7 @@ A copy of the Rocks source code, including the source code for the Triton rolls,
 currently hosted on a `public, read-only Gitweb server` which can be found at the following 
 URL...
 
-.. public, read-only Gitweb server: http://git.rocksclusters.org/cgi-bin/gitweb.cgi
+.. _public, read-only Gitweb server: http://git.rocksclusters.org/cgi-bin/gitweb.cgi
 
 Included in this repository is the historic source for the entire Rocks software stack, 
 a mirror of the current Rocks software stack now published to GitHub and all of the 
@@ -460,7 +460,9 @@ roll source directory.
 For example, the Triton roll for the Intel C++ and Fortran Compilers and related 
 development tools does not include the binaries or a license file since this 
 software requires an contract/agreement with Intel to obtain the installer packages 
-and a valid software license. ::
+and a valid software license.
+
+::
        
 	[root@devel-0-0 triton]# cat intel/PROTECTED
 	src/intel-compilers/l_*intel64*
@@ -470,14 +472,17 @@ and a valid software license. ::
 
 The Intel C++ and Fortan compiler packages must be obtained directly from Intel and 
 added to the Triton roll source for the intel roll before the roll can be built. 
-The Intel compiler binaries can be obtained from the 
-<a href="http://software.intel.com/en-us/">Intel Developer Zone website</a>
+The Intel compiler binaries can be obtained from the `Intel Developer Zone`_ website.
+
+.. _Intel Developer Zone: http://software.intel.com/en-us/
 
 Once the Intel compiler binaries have been obtained and the required file(s) 
 placed into the Triton roll source directory then the intel roll can be built.
 
 The Triton roll is expecting Intel C++/Fortran Compilers found in the following 
-Intel downloads... ::
+Intel downloads...
+
+::
       
 	[root@devel-0-0 triton]# grep "^VERSION" intel/src/intel-compilers/version.mk && grep "^SOURCE" intel/src/intel-compilers/Makefile
 	VERSION = 2013.1.117
@@ -488,7 +493,9 @@ On the Intel Developer Zone website these compilers are part of the Intel Compos
 XE Suite, Update 1 from 10-Oct-2012.
 
 A list of Intel compiler packages expected by the Triton intel roll can be found 
-in the file, intel/nodes/intel-compilers-common.xml. ::
+in the file, intel/nodes/intel-compilers-common.xml.
+
+::
 
 	<package>intel-compilerproc-117</package>
 	<package>intel-compilerproc-devel-117</package>
@@ -519,6 +526,7 @@ in the file, intel/nodes/intel-compilers-common.xml. ::
 
 The latest Intel C++/Fortran Compilers as of the date of this document are...
 -----------------------------------------------------------------------------
+
 ::
 
 	l_ccompxe_2013.5.192.tgz  Update 5  07 Jun 2013
@@ -823,6 +831,6 @@ See the Rocks documentation for examples of how to re-install your cluster nodes
 - `Forcing a Re-install at Next PXE Boot`_
 - `Reinstall All Compute Nodes with SGE`_
 
-.. Rocks User Guide: http://central6.rocksclusters.org/roll-documentation/base/6.1/
-.. Forcing a Re-install at Next PXE Boot: http://central6.rocksclusters.org/roll-documentation/base/6.1/x1817.html
-.. Reinstall All Compute Nodes with SGE: http://central6.rocksclusters.org/roll-documentation/base/6.1/sge-cluster-reinstall.html
+.. _Rocks User Guide: http://central6.rocksclusters.org/roll-documentation/base/6.1/
+.. _Forcing a Re-install at Next PXE Boot: http://central6.rocksclusters.org/roll-documentation/base/6.1/x1817.html
+.. _Reinstall All Compute Nodes with SGE: http://central6.rocksclusters.org/roll-documentation/base/6.1/sge-cluster-reinstall.html
