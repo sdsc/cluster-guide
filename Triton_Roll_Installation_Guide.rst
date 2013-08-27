@@ -268,11 +268,11 @@ remain for archival purposes only.
 
 The basic workflow for installing software using the Triton rolls is as follows...
 
-- `Download Triton Roll(s) to Development Server`_
-- `Build Triton Roll(s) on Development Server`_
-- `Copy Triton Roll(s) to Frontend`_
-- `Install Triton Roll(s) on Frontend`_
-- `Test Triton Roll(s) Installation on Frontend`_
+- `Download Triton Rolls to Development Server`_
+- `Build Triton Rolls on Development Server`_
+- `Copy Triton Rolls to Frontend`_
+- `Install Triton Rolls on Frontend`_
+- `Test Triton Rolls Installation on Frontend`_
 - `Install/Re-install Nodes`_
 
 
