@@ -1,7 +1,7 @@
 .. 	These notes will address issues with various sections of the current cluster-guide
 	documents on github in the order they are presented.
 
-.. |reg| unicode:: 0x174
+.. include:: <isonum.txt>
 
 Welcome to the Triton Roll Installation Guide!
 **********************************************
@@ -10,7 +10,7 @@ Welcome to the Triton Roll Installation Guide!
 
 This guide will teach you how to safely build and deploy software on your Rocks|reg| Cluster
 using Triton Rolls. The techniques described can be used once during initial installation
-but we recommend their use during the entire life of your |Rocks (R)| cluster.
+but we recommend their use during the entire life of your Rocks |reg| cluster.
 
 
 Table of Contents
