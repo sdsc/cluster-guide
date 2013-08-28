@@ -1,3 +1,8 @@
+..	Roll testing should be included as a primary step in the roll
+	installation sequence. These are good tests and can be complimented by
+	others. Roll tests with errors, if documented, should include explanation
+	and/or solutions.
+
 Debugging your Roll Installations
 *********************************
 There are a few ways that you can test whether or not a roll has been successfully installed on a cluster.  These debugging methods are discussed in detail on the Rocks Clusters documentation site listed below.

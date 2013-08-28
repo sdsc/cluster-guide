@@ -1,3 +1,10 @@
+..	The 'detail' of this document should be replaced with a reference to
+	the Rocks User Guide. Notable exception, eg. selection of appliance type,
+	should be added. Additionally, deviations for *expected* behavior for a
+	compute node (which is documented in the Rocks User Guide) *might* be
+	added. For example, since the Development Appliance is derived from
+	'server' the /state/partition1 partition is NOT formatted on reinstall.
+ 
 Installing Your Development Appliance
 =====================================
 After connecting all the hardware up through a switch on their *eth0* ports to connect all the nodes up to the front end, make sure that all the nodes are off.  Keep in mind that *eth0* is usually used for local purposes such as this, while *eth1* is used for connecting to the WLAN.  Take note of the ``rocks help`` command for more information on rocks commands.

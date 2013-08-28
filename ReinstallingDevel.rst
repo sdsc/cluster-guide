@@ -1,3 +1,10 @@
+..	This document is linked as a solution to dependency resolution but the
+	contents are misleading. This document essentially describes how to
+	return the Development Appliance to the 'standard' Compute Node pool.
+
+	The dependency resolution issue is not really addressed... do so.
+
+
 Reinstalling Your Development Appliance
 =======================================
 You will need to reinstall your Development Appliance as a Compute Node.  In order to do so you must first remove it as an installed appliance on your Front End.

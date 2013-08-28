@@ -1,6 +1,10 @@
-Setting Up Your Front End
-*************************
-In this section you will learn where to **download** the most up-to-date version of Rocks and **install** it on your front end.
+
+..	This file/document is beyond the scope of this tutorial and should be
+	removed.
+
+Setting Up Your Frontend
+************************
+In this section you will learn where to **download** the most up-to-date version of Rocks and **install** it on your frontend.
 
 Downloading Rocks
 =================
