@@ -87,29 +87,31 @@ instead select 'Development Appliance' as your appliance type.
 Once devel-server-0-0 has completed installation you should verify that you can
 login to the node as root.
 
-	[root@frontend ~]# ssh devel-server-0-0
-	Last login: Tue Aug 20 10:31:51 2013 from frontend.local
-	Rocks 6.1 Development Server
-	Rocks 6.1 (Emerald Boa)
-	Profile built 10:23 20-Aug-2013
+```
+[root@frontend ~]# ssh devel-server-0-0
+Last login: Tue Aug 20 10:31:51 2013 from frontend.local
+Rocks 6.1 Development Server
+Rocks 6.1 (Emerald Boa)
+Profile built 10:23 20-Aug-2013
 
-	Kickstarted 10:29 20-Aug-2013
-	[root@devel-server-0-0 ~]#
+Kickstarted 10:29 20-Aug-2013
+[root@devel-server-0-0 ~]#
+```
 
 **NOTE: The definition of the Rocks Development Appliance is contained in the following file(s)...**
 
+```
 	[root@frontend ~]# ls -l /export/rocks/install/rocks-dist/x86_64/build/nodes/devel*
 	-rw-r--r-- 1 root root 2840 Mar  6 22:39 /export/rocks/install/rocks-dist/x86_64/build/nodes/devel-appliance.xml
 	-rw-r--r-- 1 root root  687 Mar  6 22:39 /export/rocks/install/rocks-dist/x86_64/build/nodes/devel-server.xml
 	-rw-r--r-- 1 root root 1039 Mar  6 22:39 /export/rocks/install/rocks-dist/x86_64/build/nodes/devel.xml
-	
+```	
 
 To modify the configuration of the Rocks Development Appliance you should follow
 the [customization
 sequences](http://central6.rocksclusters.org/roll-documentation/base/6.1/
-customization.html) described in the [Rocks User
-Guide](http://central6.rocksclusters.org/roll-documentation/base/6.1/) with the
-following exceptions...
+customization.html) described in the [Rocks User Guide][rug] with the following
+exceptions...
 
 - Where applicable you will copy skeleton.xml to extend-devel.xml
 - Rocks Development Appliances explicitly have autofs disabled so they will NOT
@@ -149,6 +151,7 @@ In order to download Triton rolls directly to your Development Server
 A script is being provided with this documentation that can be used to download
 all of the Triton rolls to devel-0-0...
 
+```
 	#!/bin/bash
 	# This script will use 'git clone' to create a local copy of the Triton roll
 	# source(s) on git.rocksclusters.org on your Rocks Development Appliance.
@@ -158,25 +161,25 @@ all of the Triton rolls to devel-0-0...
 	#       needs to be changed to the GitHub repository once the Triton rolls
 	#       have been place into GitHub.
 
-	# NOTE: When pulling the Triton roll source(s) from the git repository on a
-	#       cluster without access to the public Internet (ie. a dev cluster in a
-	#       virtual environment or private network) you can create an SSH tunnel to the
-	#       repository host through another host that has access to the public Internet
-	#       (ie. your virtualization host) and the cluster frontend. Then you can tunnel
-	#       the git clone traffic through the SSH tunnel to put the Triton roll
-	#       source(s) directly on your Development Server without first copying them
-	#       somewhere else.
-	#
+	# NOTE: When pulling the Triton roll source(s) from the git repository on
+	#       a cluster without access to the public Internet (ie. a dev cluster
+	#       in a virtual environment or private network) you can create an SSH
+	#       tunnel to the repository host through another host that has access
+	#       to the public Internet (ie. your virtualization host) and the
+	#       cluster frontend. Then you can tunnel the git clone traffic through
+	#       the SSH tunnel to put the Triton roll source(s) directly on your
+	#       Development Server without first copying them somewhere else.
+	# 	 
 	#       For example, create a tunnel to port 80 of git.rocksclusters.org
 	#       using <user>@<public_access_host>...
-	#
+	# 	 
 	#       ssh <user>@<public_access_host> -L 8888:git.rocksclusters.org:80
-	#
-	#       Then, change the Triton roll source(s) SRC to point to the tunnel 
+	# 	
+	#       Then, change the Triton roll source(s) SRC to point to the tunnel
 	#       you just defined.
-	#
+	# 	
 	#       SRC="http://localhost:8888/git/triton"
-	#
+	# 	
 
 	SRC="http://git.rocksclusters.org/git/triton"
 	DST="/state/partition1/triton"
@@ -195,11 +198,13 @@ all of the Triton rolls to devel-0-0...
 	do
 	  git clone $SRC"/"$repo"/.git" $DST"/"$repo
 	done
+```
 
 Create a file on devel-0-0 and copy the above script into it. Make it executable
 and then run the script to pull the Triton roll source(s) onto your devel-0-0
 node. Here is sample output from running triton_repo_script.sh
 
+```
 	[root@devel-0-0 partition1]# ./triton_repo_script.sh
 	Cloning into '/state/partition1/triton/R'...
 	Cloning into '/state/partition1/triton/amber'...
@@ -242,6 +247,7 @@ node. Here is sample output from running triton_repo_script.sh
 	Cloning into '/state/partition1/triton/triton-base'...
 	Cloning into '/state/partition1/triton/triton-config'...
 	Cloning into '/state/partition1/triton/valgrind'...
+```
 
 When triton_repo_script.sh finishes running you should have a complete copy of
 the published Triton roll source(s) in /state/partition1/triton and you can move
@@ -249,6 +255,7 @@ on to the next step of this documentation.
 
 For example...
 
+```
 	[root@devel-0-0 ~]# tree /state/partition1/triton
 
 	/state/partition1/triton
@@ -292,7 +299,7 @@ For example...
 	|   |       `-- version.mk
 	|   `-- version.mk
 	`-- valgrind
-
+```
 
 Some of the Triton rolls are created for software with restricted
 re-distribution policies. The content of these rolls is not complete
@@ -307,11 +314,13 @@ development tools does not include the binaries or a license file since this
 software requires an contract/agreement with Intel to obtain the installer
 packages and a valid software license.
 
+```
 	[root@devel-0-0 triton]# cat intel/PROTECTED
 	src/intel-compilers/l_*intel64*
 
 	[root@devel-0-0 triton]# ls intel/src/intel-compilers
 	Makefile  version.mk
+```
 
 The Intel C++ and Fortan compiler packages must be obtained directly from Intel
 and added to the Triton roll source for the intel roll before the roll can be
@@ -324,10 +333,12 @@ placed into the Triton roll source directory then the intel roll can be built.
 The Triton roll is expecting Intel C++/Fortran Compilers found in the following
 Intel downloads...
 
+```
 	[root@devel-0-0 triton]# grep "^VERSION" intel/src/intel-compilers/version.mk && grep "^SOURCE" intel/src/intel-compilers/Makefile
 	VERSION = 2013.1.117
 	SOURCEC		= l_ccompxe_$(VERSION)
 	SOURCEF		= l_fcompxe_$(VERSION)
+```
 
 On the Intel Developer Zone website these compilers are part of the Intel
 Composer XE Suite, Update 1 from 10-Oct-2012.
@@ -335,6 +346,7 @@ Composer XE Suite, Update 1 from 10-Oct-2012.
 A list of Intel compiler packages expected by the Triton intel roll can be found
 in the file, intel/nodes/intel-compilers-common.xml.
 
+```
 	<package>intel-compilerproc-117</package>
 	<package>intel-compilerproc-devel-117</package>
 	<package>intel-compilerpro-devel-117</package>
@@ -361,15 +373,19 @@ in the file, intel/nodes/intel-compilers-common.xml.
 	<package>intel-sourcechecker-common-117</package>
 	<package>intel-tbb-117</package>
 	<package>intel-tbb-devel-117</package> 
+```
 
 The latest Intel C++/Fortran Compilers as of the date of this document are...
 
+```
 	l_ccompxe_2013.5.192.tgz  Update 5  07 Jun 2013
 	l_fcompxe_2013.5.192.tgz  Update 5  07 Jun 2013
+```
 
 The Intel compiler packages contain the following RPM's which will be extracted
 and copied into the SRC directory during the roll build process...
 
+```
 	intel-compilerpro-devel-192-13.1-5.x86_64.rpm
 	intel-compilerproc-192-13.1-5.x86_64.rpm
 	intel-compilerproc-devel-192-13.1-5.x86_64.rpm
@@ -395,6 +411,7 @@ and copied into the SRC directory during the roll build process...
 	intel-sourcechecker-common-192-13.1-5.noarch.rpm
 	intel-tbb-192-4.1-4.noarch.rpm
 	intel-tbb-devel-192-4.1-4.noarch.rpm
+```
 	
 Go back to the [Table of Contents](#table-of-contents)
 
@@ -402,6 +419,7 @@ Go back to the [Table of Contents](#table-of-contents)
 
 Enter the roll source directory and make the Rocks distribution...
 
+```
 	[root@devel-0-0 ~]# cd /state/partition1/triton/intel
 
 	[root@devel-0-0 intel]# make default 2>&1 | tee build.log ; clear; ls -l *.iso && grep "build err" build.log
@@ -431,12 +449,15 @@ Enter the roll source directory and make the Rocks distribution...
 	Building ISO image for disk1 ...
 	Creating disk2 (474.44MB)...  This disk is optional (extra rpms)
 	Building ISO image for disk2 ...
+```
 
 Verify build completed without errors and produce one (or more) roll ISO files...
 
+```
 	[root@devel-0-0 intel]# ls -l *.iso && grep "build err" build.log
 	-rw-r--r-- 1 root root 555038720 Aug 22 10:34 intel-6.1-8.x86_64.disk1.iso
 	-rw-r--r-- 1 root root 497879040 Aug 22 10:34 intel-6.1-8.x86_64.disk2.iso
+```
 
 Go back to the [Table of Contents](#table-of-contents)
 
@@ -446,10 +467,12 @@ You will need to copy the `*.iso` files you just created for the Triton intel
 roll onto your Rocks cluster frontend. The easiest way to do this is to use
 `scp` on your frontend...
 
+```
 	[root@frontend ~]# cd /export/apps/devel/rolls/
 	[root@frontend rolls]# scp "devel-0-0:/state/partition1/triton/intel/*.iso" .
 	intel-6.1-8.x86_64.disk1.iso                        100%  529MB  52.9MB/s   00:10
 	intel-6.1-8.x86_64.disk2.iso                        100%  475MB  47.5MB/s   00:10
+```
 
 Go back to the [Table of Contents](#table-of-contents)
 
@@ -457,22 +480,29 @@ Go back to the [Table of Contents](#table-of-contents)
 
 Install the intel roll...
 
+```
 	[root@frontend rolls]# Rocks add roll intel-6.1-8.x86_64.disk1.iso intel-6.1-8.x86_64.disk2.iso
 	Copying intel to Rolls.....1083229 blocks
 	Copying intel to Rolls.....971659 blocks
+```
 
 Enable the intel roll...
 
+```
 	[root@frontend rolls]# Rocks enable roll intel
+```
 
 Verify the intel roll...
 
+```
 	[root@frontend rolls]# Rocks list roll intel
 	NAME   VERSION ARCH   ENABLED
 	intel: 6.1     x86_64 yes
+```
 
 Re-build the Rocks distribution...
 
+```
 	[root@frontend ~]# cd /export/rocks/install
 	Cleaning distribution
 	Resolving versions (base files)
@@ -526,14 +556,17 @@ Re-build the Rocks distribution...
 
 		 Rebuilding Product Image including md5 sums
 		 Creating Directory Listing
-
+```
 
 Verify package availability in Rocks distribution...
 
+```
 	[root@frontend install]# yum clean all
 	Cleaning repos: Rocks-6.1
 	Cleaning up Everything
+```
 
+```
 	[root@frontend install]# yum info intel-compilerproc-devel-117-13.0
 	Rocks-6.1                                                | 1.9 kB     00:00
 	Rocks-6.1/primary                                        | 2.6 MB     00:00
@@ -548,7 +581,9 @@ Verify package availability in Rocks distribution...
 	Summary     : Intel(R) C++ Compiler XE 13.0 Update 1 for Linux*
 	License     : Intel Copyright 1999-2012
 	Description : Intel(R) C++ Compiler XE 13.0 Update 1 for Linux*
+```
 
+```
 	[root@frontend install]# yum info intel-compilerprof-devel-117-13.0
 	Available Packages
 	Name        : intel-compilerprof-devel-117
@@ -560,7 +595,7 @@ Verify package availability in Rocks distribution...
 	Summary     : Intel(R) Fortran Compiler XE 13.0 Update 1 for Linux*
 	License     : Intel Copyright 1999-2012
 	Description : Intel(R) Fortran Compiler XE 13.0 Update 1 for Linux*
-
+```
 Go back to the [Table of Contents](#table-of-contents)
 
 
@@ -568,13 +603,16 @@ Go back to the [Table of Contents](#table-of-contents)
 
 Install Triton intel roll on frontend...
 
+```
 	[root@frontend ~]# Rocks run roll intel > rocks_run_roll_intel.sh
 	[root@frontend ~]# chmod +x rocks_run_roll_intel.sh
 	[root@frontend ~]# ./rocks_run_roll_intel.sh 2>&1 | tee rocks_run_roll_intel.sh.log
 	[root@frontend ~]# grep "[F|f]ailed" rocks_run_roll_intel.sh.log
+```
 
 Verify installation of Intel compiler packages on frontend...
 
+```
 	[root@frontend ~]# yum info intel-compilerproc-117-13.0 intel-compilerprof-117-13.0
 	Installed Packages
 	Name        : intel-compilerproc-117
@@ -598,9 +636,11 @@ Verify installation of Intel compiler packages on frontend...
 	Summary     : Intel(R) Fortran Compiler XE 13.0 Update 1 for Linux*
 	License     : Intel Copyright 1999-2012
 	Description : Intel(R) Fortran Compiler XE 13.0 Update 1 for Linux*
+```
 
 Run the intel roll test script...
 
+```
 	[root@frontend ~]# /root/rolltests/intel.t
 	ok 1 - intel compilers installed
 	ok 2 - intel C compiler works
@@ -614,6 +654,7 @@ Run the intel roll test script...
 	ok 10 - intel version module installed
 	ok 11 - intel version module link created
 	1..11
+```
 
 Go back to the [Table of Contents](#table-of-contents)
 
