@@ -76,10 +76,11 @@ source. The Rocks Development Appliance definition was added to Rocks in version
 Installation of a Rocks Development Appliance follows the [standard node
 installation
 sequence](http://central6.rocksclusters.org/roll-documentation/base/6.1/install-
-compute-nodes.html) described in the [Rocks User
-Guide](http://central6.rocksclusters.org/roll-documentation/base/6.1/) with the
-exception that in step 2 you will NOT select 'Compute' as your appliance type
-but you will instead select 'Development Appliance' as your appliance type.
+compute-nodes.html) described in the [Rocks User Guide][rug] with the exception
+that in step 2 you will NOT select 'Compute' as your appliance type but you will
+instead select 'Development Appliance' as your appliance type.
+
+[rug]: http://central6.rocksclusters.org/roll-documentation/base/6.1/ "Rocks Users Guide"
 
 !["Adding a 'Development Server' appliance with insert-ethers](https://github.com/tcooper/cluster-guide/blob/rewrite/images/01_insert-ethers_devel-server.png?raw=true "Adding a 'Development Server' appliance with insert-ethers")
 
