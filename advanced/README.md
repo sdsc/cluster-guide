@@ -1,10 +1,6 @@
-.. These notes will address issues with various sections of the current    
-   cluster-guide documents on github in the order they are presented.
-
-
 # Welcome to the Advanced Cluster Guide!
 
-..	Insert 'brief' description of this document.
+<!--	Insert 'brief' description of this document. -->
 
 This guide will teach you how to safely build and deploy software on your
 Rocks|reg| Cluster using Triton Rolls. The techniques described can be used once
@@ -14,8 +10,7 @@ your Rocks cluster.
 
 ## Table of Contents
 
-.. This is a manual TOC since I don't want the embedded title and I want to link 
-   back to the TOC after each section.
+<!-- This is a manual TOC since I don't want the embedded title and I want to link back to the TOC after each section. -->
 
 - `Overview`_
 - `Installing Your Rocks Development Appliance`_
