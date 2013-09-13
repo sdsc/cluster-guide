@@ -81,9 +81,10 @@ Guide](http://central6.rocksclusters.org/roll-documentation/base/6.1/) with the
 exception that in step 2 you will NOT select 'Compute' as your appliance type
 but you will instead select 'Development Appliance' as your appliance type.
 
-.. _standard node installation sequence: 
+<!--
 
-.. insert-ethers-devel-001.png
+Insert image here of insert-ethers_devel-server...
+-->
 
 Once devel-server-0-0 has completed installation you should verify that you can
 login to the node as root.
