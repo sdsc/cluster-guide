@@ -73,12 +73,15 @@ This guide uses a Rocks Development Appliance to build Triton rolls from roll
 source. The Rocks Development Appliance definition was added to Rocks in version
 6 so you must be using Rocks 6.x or newer to follow this guide.
 
-Installation of a Rocks Development Appliance follows the `standard node
-installation sequence`_ described in the `Rocks User Guide`_ with the exception
-that in step 2 you will NOT select 'Compute' as your appliance type but you will
-instead select 'Development Appliance' as your appliance type.
+Installation of a Rocks Development Appliance follows the [standard node
+installation
+sequence](http://central6.rocksclusters.org/roll-documentation/base/6.1/install-
+compute-nodes.html) described in the [Rocks User
+Guide](http://central6.rocksclusters.org/roll-documentation/base/6.1/) with the
+exception that in step 2 you will NOT select 'Compute' as your appliance type
+but you will instead select 'Development Appliance' as your appliance type.
 
-.. _standard node installation sequence: http://central6.rocksclusters.org/roll-documentation/base/6.1/install-compute-nodes.html
+.. _standard node installation sequence: 
 
 .. insert-ethers-devel-001.png
 
@@ -103,23 +106,22 @@ login to the node as root.
 	
 
 To modify the configuration of the Rocks Development Appliance you should follow
-the `customization sequences`_ described in the `Rocks User Guide`_ with the
+the [customization
+sequences](http://central6.rocksclusters.org/roll-documentation/base/6.1/
+customization.html) described in the [Rocks User
+Guide](http://central6.rocksclusters.org/roll-documentation/base/6.1/) with the
 following exceptions...
 
 - Where applicable you will copy skeleton.xml to extend-devel.xml
 - Rocks Development Appliances explicitly have autofs disabled so they will NOT
   have access to /share/apps
 
-.. _customization sequences: http://central6.rocksclusters.org/roll-documentation/base/6.1/customization.html
-
 Go back to the [Table of Contents](#table-of-contents)
 
 ## Installing Triton Rolls
 
 A copy of the Rocks source code, including the source code for the Triton rolls,
-is currently hosted on a `public Gitweb server`_.
-
-.. _public Gitweb server: http://git.rocksclusters.org/cgi-bin/gitweb.cgi
+is currently hosted on a [public Gitweb server](http://git.rocksclusters.org/cgi-bin/gitweb.cgi).
 
 Included in this repository is the historic source for the entire Rocks software
 stack, a mirror of the current Rocks software stack now published to GitHub and
@@ -130,12 +132,13 @@ will remain for archival purposes only.
 
 The basic workflow for installing software using the Triton rolls is as follows...
 
-- `Download Triton Rolls to Development Server`_
-- `Build Triton Rolls on Development Server`_
-- `Copy Triton Rolls to Frontend`_
-- `Install Triton Rolls on Frontend`_
-- `Test Triton Rolls Installation on Frontend`_
-- `Install or Reinstall Nodes`_
+- [Download Triton Rolls to Development Server](#download-triton-rolls-to-development-server)
+- [Build Triton Rolls on Development Server](#build-triton-rolls-on-development-server)
+- [Copy Triton Rolls to Frontend](#copy-triton-rolls-to-frontend)
+- [Install Triton Rolls on Frontend](#install-triton-rolls-on-frontend)
+- [Test Triton Rolls Installation on Frontend](#test-triton-rolls-installation-on-frontend)
+- [Install or Reinstall Nodes](#install-or-reinstall-nodes)
+
 
 Go back to the [Table of Contents](#table-of-contents)
 
@@ -313,10 +316,8 @@ packages and a valid software license.
 
 The Intel C++ and Fortan compiler packages must be obtained directly from Intel
 and added to the Triton roll source for the intel roll before the roll can be
-built. The Intel compiler binaries can be obtained from the `Intel Developer
-Zone`_ website.
-
-.. _Intel Developer Zone: http://software.intel.com/en-us/
+built. The Intel compiler binaries can be obtained from the [Intel Developer
+Zone](http://software.intel.com/en-us/) website.
 
 Once the Intel compiler binaries have been obtained and the required file(s)
 placed into the Triton roll source directory then the intel roll can be built.
@@ -627,11 +628,7 @@ Triton intel roll.
 See the Rocks documentation for examples of how to re-install your cluster
 nodes...
 
-- `Forcing a Re-install at Next PXE Boot`_
-- `Reinstall All Compute Nodes with SGE`_
-
-.. _Rocks User Guide: http://central6.rocksclusters.org/roll-documentation/base/6.1/
-.. _Forcing a Re-install at Next PXE Boot: http://central6.rocksclusters.org/roll-documentation/base/6.1/x1817.html
-.. _Reinstall All Compute Nodes with SGE: http://central6.rocksclusters.org/roll-documentation/base/6.1/sge-cluster-reinstall.html
+- [Forcing a Re-install at Next PXE Boot](http://central6.rocksclusters.org/roll-documentation/base/6.1/x1817.html)
+- [Reinstall All Compute Nodes with SGE](http://central6.rocksclusters.org/roll-documentation/base/6.1/sge-cluster-reinstall.html)
 
 Go back to the [Table of Contents](#table-of-contents)
