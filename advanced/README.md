@@ -1,22 +1,21 @@
-.. 	These notes will address issues with various sections of the current cluster-guide
-	documents on github in the order they are presented.
+.. These notes will address issues with various sections of the current    
+   cluster-guide documents on github in the order they are presented.
 
 
-Welcome to the Triton Roll Installation Guide!
-**********************************************
+# Welcome to the Advanced Cluster Guide!
 
 ..	Insert 'brief' description of this document.
 
-This guide will teach you how to safely build and deploy software on your Rocks|reg| Cluster
-using Triton Rolls. The techniques described can be used once during initial installation
-but we recommend their use during the entire life of your Rocks cluster.
+This guide will teach you how to safely build and deploy software on your
+Rocks|reg| Cluster using Triton Rolls. The techniques described can be used once
+during initial installation but we recommend their use during the entire life of
+your Rocks cluster.
 
 
-Table of Contents
-=================
+## Table of Contents
 
-.. This is a manual TOC since I don't want the embedded title and I want to link back
-   to the TOC after each section.
+.. This is a manual TOC since I don't want the embedded title and I want to link 
+   back to the TOC after each section.
 
 - `Overview`_
 - `Installing Your Rocks Development Appliance`_
@@ -29,28 +28,29 @@ Table of Contents
 	- `Install or Reinstall Nodes`_
 
 
-Overview
-========
+## Overview
 
-..	This guide 'should' be a guide to get/build/use SDSC Triton software rolls to
-	customize an already installed cluster. It is NOT a basic cluster installation guide.
-	That topic is covered completely in the standard Rocks documentation and those steps
-	should only be referenced in this guide.
+.. This guide 'should' be a guide to get/build/use SDSC Triton software rolls   
+   to customize an already installed cluster. It is NOT a basic cluster 
+   installation guide.
+   That topic is covered completely in the standard Rocks documentation and 
+   those steps should only be referenced in this guide.
 
-In this guide you will learn how to download, build and deploy software to your running
-Rocks cluster using a Rocks Development Appliance. Ideally, you will begin using this
-guide during your initial cluster install, however it is possible to use this guide after
-you have begun using your cluster as long as you can meet a few basic requirements.
+In this guide you will learn how to download, build and deploy software to your
+running Rocks cluster using a Rocks Development Appliance. Ideally, you will
+begin using this guide during your initial cluster install, however it is
+possible to use this guide after you have begun using your cluster as long as
+you can meet a few basic requirements.
 
-This guide describes the use of publicly available rolls developed for the UC San Diego
-Triton cluster. The Triton cluster was in production at UC San Diego from October, 2009
-through June 2013 and ran Rocks 5.4. As a result, the rolls we will be building are named
-'Triton Rolls'.
+This guide describes the use of publicly available rolls developed for the UC
+San Diego Triton cluster. The Triton cluster was in production at UC San Diego
+from October, 2009 through June 2013 and ran Rocks 5.4. As a result, the rolls
+we will be building are named 'Triton Rolls'.
 
-Recently, the Triton cluster was decommissioned and replaced by the UC San Diego Triton
-Shared Compute Cluster (TSCC) which went into production in May, 2013. The UC San Diego
-TSCC cluster is currently running Rocks 6.1 and has many of the Triton rolls built and
-installed using the steps described in this guide. 
+Recently, the Triton cluster was decommissioned and replaced by the UC San Diego
+Triton Shared Compute Cluster (TSCC) which went into production in May, 2013.
+The UC San Diego TSCC cluster is currently running Rocks 6.1 and has many of the
+Triton rolls built and installed using the steps described in this guide. 
 
 This guide assumes the following...
 
@@ -59,31 +59,29 @@ This guide assumes the following...
 - The cluster private network is correctly cabled and configured 
 - The cluster frontend can access the public Internet 
 - You have a node that you can install as a Rocks Development Appliance 
-- There is sufficient disk capacity on your Rocks Development Appliance to hold the roll 
-  sources, compiled binaries (if/when necessary) and Triton rolls you wish to build.
+- There is sufficient disk capacity on your Rocks Development Appliance to hold
+the roll sources, compiled binaries (if/when necessary) and Triton rolls you
+wish to build.
 
 Go back to the `Table of Contents`_
 
-Installing Your Rocks Development Appliance
-===========================================
+## Installing Your Rocks Development Appliance
 
-This guide uses a Rocks Development Appliance to build Triton rolls from roll source. The 
-Rocks Development Appliance definition was added to Rocks in version 6 so you must be
-using Rocks 6.x or newer to follow this guide.
+This guide uses a Rocks Development Appliance to build Triton rolls from roll
+source. The Rocks Development Appliance definition was added to Rocks in version
+6 so you must be using Rocks 6.x or newer to follow this guide.
 
-Installation of a Rocks Development Appliance follows the `standard node installation 
-sequence`_ described in the `Rocks User Guide`_ with the exception that in step 2 you 
-will NOT select 'Compute' as your appliance type but you will instead select 
-'Development Appliance' as your appliance type.
+Installation of a Rocks Development Appliance follows the `standard node
+installation sequence`_ described in the `Rocks User Guide`_ with the exception
+that in step 2 you will NOT select 'Compute' as your appliance type but you will
+instead select 'Development Appliance' as your appliance type.
 
 .. _standard node installation sequence: http://central6.rocksclusters.org/roll-documentation/base/6.1/install-compute-nodes.html
 
 .. insert-ethers-devel-001.png
 
-Once devel-server-0-0 has completed installation you should verify that you can login to 
-the node as root.
-
-::
+Once devel-server-0-0 has completed installation you should verify that you can
+login to the node as root.
 
 	[root@frontend ~]# ssh devel-server-0-0
 	Last login: Tue Aug 20 10:31:51 2013 from frontend.local
@@ -96,16 +94,15 @@ the node as root.
 
 **NOTE: The definition of the Rocks Development Appliance is contained in the following file(s)...**
 
-::
-      
 	[root@frontend ~]# ls -l /export/rocks/install/rocks-dist/x86_64/build/nodes/devel*
 	-rw-r--r-- 1 root root 2840 Mar  6 22:39 /export/rocks/install/rocks-dist/x86_64/build/nodes/devel-appliance.xml
 	-rw-r--r-- 1 root root  687 Mar  6 22:39 /export/rocks/install/rocks-dist/x86_64/build/nodes/devel-server.xml
 	-rw-r--r-- 1 root root 1039 Mar  6 22:39 /export/rocks/install/rocks-dist/x86_64/build/nodes/devel.xml
 	
 
-To modify the configuration of the Rocks Development Appliance you should follow the 
-`customization sequences`_ described in the `Rocks User Guide`_ with the following exceptions...
+To modify the configuration of the Rocks Development Appliance you should follow
+the `customization sequences`_ described in the `Rocks User Guide`_ with the
+following exceptions...
 
 - Where applicable you will copy skeleton.xml to extend-devel.xml
 - Rocks Development Appliances explicitly have autofs disabled so they will NOT
@@ -115,20 +112,19 @@ To modify the configuration of the Rocks Development Appliance you should follow
 
 Go back to the `Table of Contents`_
 
-Installing Triton Rolls
-=======================
+## Installing Triton Rolls
 
-A copy of the Rocks source code, including the source code for the Triton rolls, is
-currently hosted on a `public Gitweb server`_.
+A copy of the Rocks source code, including the source code for the Triton rolls,
+is currently hosted on a `public Gitweb server`_.
 
 .. _public Gitweb server: http://git.rocksclusters.org/cgi-bin/gitweb.cgi
 
-Included in this repository is the historic source for the entire Rocks software stack, a
-mirror of the current Rocks software stack now published to GitHub and all of the
-published Triton rolls.
+Included in this repository is the historic source for the entire Rocks software
+stack, a mirror of the current Rocks software stack now published to GitHub and
+all of the published Triton rolls.
 
-Eventually the Triton rolls will also be published to GitHub and this repository will
-remain for archival purposes only.
+Eventually the Triton rolls will also be published to GitHub and this repository
+will remain for archival purposes only.
 
 The basic workflow for installing software using the Triton rolls is as follows...
 
@@ -141,16 +137,13 @@ The basic workflow for installing software using the Triton rolls is as follows.
 
 Go back to the `Table of Contents`_
 
-Download Triton Rolls to Development Server
--------------------------------------------
+### Download Triton Rolls to Development Server
 
-In order to download Triton rolls directly to your Development Server (devel-0-0) your
-frontend needs to have access to the public Internet*.
+In order to download Triton rolls directly to your Development Server
+(devel-0-0) your frontend needs to have access to the public Internet*.
 
-A script is being provided with this documentation that can be used to download all of the
-Triton rolls to devel-0-0...
-
-::
+A script is being provided with this documentation that can be used to download
+all of the Triton rolls to devel-0-0...
 
 	#!/bin/bash
 	# This script will use 'git clone' to create a local copy of the Triton roll
@@ -199,11 +192,9 @@ Triton rolls to devel-0-0...
 	  git clone $SRC"/"$repo"/.git" $DST"/"$repo
 	done
 
-Create a file on devel-0-0 and copy the above script into it. Make it executable and then
-run the script to pull the Triton roll source(s) onto your devel-0-0 node. Here is sample
-output from running triton_repo_script.sh
-
-::
+Create a file on devel-0-0 and copy the above script into it. Make it executable
+and then run the script to pull the Triton roll source(s) onto your devel-0-0
+node. Here is sample output from running triton_repo_script.sh
 
 	[root@devel-0-0 partition1]# ./triton_repo_script.sh
 	Cloning into '/state/partition1/triton/R'...
@@ -248,13 +239,11 @@ output from running triton_repo_script.sh
 	Cloning into '/state/partition1/triton/triton-config'...
 	Cloning into '/state/partition1/triton/valgrind'...
 
-When triton_repo_script.sh finishes running you should have a complete copy of the
-published Triton roll source(s) in /state/partition1/triton and you can move on to the
-next step of this documentation.
+When triton_repo_script.sh finishes running you should have a complete copy of
+the published Triton roll source(s) in /state/partition1/triton and you can move
+on to the next step of this documentation.
 
 For example...
-
-::
 
 	[root@devel-0-0 ~]# tree /state/partition1/triton
 
@@ -301,52 +290,48 @@ For example...
 	`-- valgrind
 
 
-Some of the Triton rolls are created for software with restricted re-distribution
-policies. The content of these rolls is not complete unless/until the software vendor is
-contacted and the missing pieces are obtained directly.
+Some of the Triton rolls are created for software with restricted
+re-distribution policies. The content of these rolls is not complete
+unless/until the software vendor is contacted and the missing pieces are
+obtained directly.
 
-The Triton rolls that are affected by this contain a file named PROTECTED in the roll
-source directory.
+The Triton rolls that are affected by this contain a file named PROTECTED in the
+roll source directory.
 
 For example, the Triton roll for the Intel C++ and Fortran Compilers and related
-development tools does not include the binaries or a license file since this software
-requires an contract/agreement with Intel to obtain the installer packages and a valid
-software license.
+development tools does not include the binaries or a license file since this
+software requires an contract/agreement with Intel to obtain the installer
+packages and a valid software license.
 
-::
-       
 	[root@devel-0-0 triton]# cat intel/PROTECTED
 	src/intel-compilers/l_*intel64*
 
 	[root@devel-0-0 triton]# ls intel/src/intel-compilers
 	Makefile  version.mk
 
-The Intel C++ and Fortan compiler packages must be obtained directly from Intel and added
-to the Triton roll source for the intel roll before the roll can be built. The Intel
-compiler binaries can be obtained from the `Intel Developer Zone`_ website.
+The Intel C++ and Fortan compiler packages must be obtained directly from Intel
+and added to the Triton roll source for the intel roll before the roll can be
+built. The Intel compiler binaries can be obtained from the `Intel Developer
+Zone`_ website.
 
 .. _Intel Developer Zone: http://software.intel.com/en-us/
 
-Once the Intel compiler binaries have been obtained and the required file(s) placed into
-the Triton roll source directory then the intel roll can be built.
+Once the Intel compiler binaries have been obtained and the required file(s)
+placed into the Triton roll source directory then the intel roll can be built.
 
-The Triton roll is expecting Intel C++/Fortran Compilers found in the following Intel
-downloads...
+The Triton roll is expecting Intel C++/Fortran Compilers found in the following
+Intel downloads...
 
-::
-      
 	[root@devel-0-0 triton]# grep "^VERSION" intel/src/intel-compilers/version.mk && grep "^SOURCE" intel/src/intel-compilers/Makefile
 	VERSION = 2013.1.117
 	SOURCEC		= l_ccompxe_$(VERSION)
 	SOURCEF		= l_fcompxe_$(VERSION)
 
-On the Intel Developer Zone website these compilers are part of the Intel Composer XE
-Suite, Update 1 from 10-Oct-2012.
+On the Intel Developer Zone website these compilers are part of the Intel
+Composer XE Suite, Update 1 from 10-Oct-2012.
 
-A list of Intel compiler packages expected by the Triton intel roll can be found in the
-file, intel/nodes/intel-compilers-common.xml.
-
-::
+A list of Intel compiler packages expected by the Triton intel roll can be found
+in the file, intel/nodes/intel-compilers-common.xml.
 
 	<package>intel-compilerproc-117</package>
 	<package>intel-compilerproc-devel-117</package>
@@ -377,15 +362,11 @@ file, intel/nodes/intel-compilers-common.xml.
 
 The latest Intel C++/Fortran Compilers as of the date of this document are...
 
-::
-
 	l_ccompxe_2013.5.192.tgz  Update 5  07 Jun 2013
 	l_fcompxe_2013.5.192.tgz  Update 5  07 Jun 2013
 
-The Intel compiler packages contain the following RPM's which will be extracted and 
-copied into the SRC directory during the roll build process...
-
-::
+The Intel compiler packages contain the following RPM's which will be extracted
+and copied into the SRC directory during the roll build process...
 
 	intel-compilerpro-devel-192-13.1-5.x86_64.rpm
 	intel-compilerproc-192-13.1-5.x86_64.rpm
@@ -415,12 +396,9 @@ copied into the SRC directory during the roll build process...
 	
 Go back to the `Table of Contents`_
 
-Build Triton Rolls on Development Server
-----------------------------------------
+### Build Triton Rolls on Development Server
 
 Enter the roll source directory and make the Rocks distribution...
-
-::
 
 	[root@devel-0-0 ~]# cd /state/partition1/triton/intel
 
@@ -454,21 +432,17 @@ Enter the roll source directory and make the Rocks distribution...
 
 Verify build completed without errors and produce one (or more) roll ISO files...
 
-::
-
 	[root@devel-0-0 intel]# ls -l *.iso && grep "build err" build.log
 	-rw-r--r-- 1 root root 555038720 Aug 22 10:34 intel-6.1-8.x86_64.disk1.iso
 	-rw-r--r-- 1 root root 497879040 Aug 22 10:34 intel-6.1-8.x86_64.disk2.iso
 
 Go back to the `Table of Contents`_
 
-Copy Triton Rolls to Frontend
------------------------------
+### Copy Triton Rolls to Frontend
 
-You will need to copy the `*.iso` files you just created for the Triton intel roll onto
-your Rocks cluster frontend. The easiest way to do this is to use `scp` on your frontend...
-
-::
+You will need to copy the `*.iso` files you just created for the Triton intel
+roll onto your Rocks cluster frontend. The easiest way to do this is to use
+`scp` on your frontend...
 
 	[root@frontend ~]# cd /export/apps/devel/rolls/
 	[root@frontend rolls]# scp "devel-0-0:/state/partition1/triton/intel/*.iso" .
@@ -477,12 +451,9 @@ your Rocks cluster frontend. The easiest way to do this is to use `scp` on your 
 
 Go back to the `Table of Contents`_
 
-Install Triton Rolls on Frontend
---------------------------------
+### Install Triton Rolls on Frontend
 
 Install the intel roll...
-
-::
 
 	[root@frontend rolls]# Rocks add roll intel-6.1-8.x86_64.disk1.iso intel-6.1-8.x86_64.disk2.iso
 	Copying intel to Rolls.....1083229 blocks
@@ -490,21 +461,15 @@ Install the intel roll...
 
 Enable the intel roll...
 
-::
-
 	[root@frontend rolls]# Rocks enable roll intel
 
 Verify the intel roll...
-
-::
 
 	[root@frontend rolls]# Rocks list roll intel
 	NAME   VERSION ARCH   ENABLED
 	intel: 6.1     x86_64 yes
 
 Re-build the Rocks distribution...
-
-::
 
 	[root@frontend ~]# cd /export/rocks/install
 	Cleaning distribution
@@ -563,8 +528,6 @@ Re-build the Rocks distribution...
 
 Verify package availability in Rocks distribution...
 
-::
-
 	[root@frontend install]# yum clean all
 	Cleaning repos: Rocks-6.1
 	Cleaning up Everything
@@ -599,12 +562,9 @@ Verify package availability in Rocks distribution...
 Go back to the `Table of Contents`_
 
 
-Test Triton Rolls Installation on Frontend
-------------------------------------------
+### Test Triton Rolls Installation on Frontend
 
 Install Triton intel roll on frontend...
-
-::
 
 	[root@frontend ~]# Rocks run roll intel > rocks_run_roll_intel.sh
 	[root@frontend ~]# chmod +x rocks_run_roll_intel.sh
@@ -613,8 +573,6 @@ Install Triton intel roll on frontend...
 
 Verify installation of Intel compiler packages on frontend...
 
-::
- 
 	[root@frontend ~]# yum info intel-compilerproc-117-13.0 intel-compilerprof-117-13.0
 	Installed Packages
 	Name        : intel-compilerproc-117
@@ -641,8 +599,6 @@ Verify installation of Intel compiler packages on frontend...
 
 Run the intel roll test script...
 
-::
-
 	[root@frontend ~]# /root/rolltests/intel.t
 	ok 1 - intel compilers installed
 	ok 2 - intel C compiler works
@@ -659,14 +615,15 @@ Run the intel roll test script...
 
 Go back to the `Table of Contents`_
 
-Install or Reinstall Nodes
---------------------------
+### Install or Reinstall Nodes
 
-Now that the Triton intel roll has been installed and tested on your Rocks cluster
-frontend you will need to install/re-install your cluster nodes that should have access to
-the Intel compilers which are part of the newly added Triton intel roll.
+Now that the Triton intel roll has been installed and tested on your Rocks
+cluster frontend you will need to install/re-install your cluster nodes that
+should have access to the Intel compilers which are part of the newly added
+Triton intel roll.
 
-See the Rocks documentation for examples of how to re-install your cluster nodes...
+See the Rocks documentation for examples of how to re-install your cluster
+nodes...
 
 - `Forcing a Re-install at Next PXE Boot`_
 - `Reinstall All Compute Nodes with SGE`_
