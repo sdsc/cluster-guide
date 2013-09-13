@@ -18,14 +18,14 @@ your Rocks cluster.
 -->
 
 - [Overview](#overview)
-- `Installing Your Rocks Development Appliance`_
-- `Installing Triton Rolls`_
-	- `Download Triton Rolls to Development Server`_
-	- `Build Triton Rolls on Development Server`_
-	- `Copy Triton Rolls to Frontend`_
-	- `Install Triton Rolls on Frontend`_
-	- `Test Triton Rolls Installation on Frontend`_
-	- `Install or Reinstall Nodes`_
+- [Installing Your Rocks Development Appliance](#installing-your-rocks-development-appliance)
+- [Installing Triton Rolls](#installing-triton-rolls)
+	- [Download Triton Rolls to Development Server](#download-triton-rolls-to-development-server)
+	- [Build Triton Rolls on Development Server](#build-triton-rolls-on-development-server)
+	- [Copy Triton Rolls to Frontend](#copy-triton-rolls-to-frontend)
+	- [Install Triton Rolls on Frontend](#install-triton-rolls-on-frontend)
+	- [Test Triton Rolls Installation on Frontend](#test-triton-rolls-installation-on-frontend)
+	- [Install or Reinstall Nodes](#install-or-reinstall-nodes)
 
 
 ## Overview
@@ -65,7 +65,7 @@ This guide assumes the following...
 the roll sources, compiled binaries (if/when necessary) and Triton rolls you
 wish to build.
 
-Go back to the `Table of Contents`_
+Go back to the [Table of Contents](#table-of-contents)
 
 ## Installing Your Rocks Development Appliance
 
@@ -112,7 +112,7 @@ following exceptions...
 
 .. _customization sequences: http://central6.rocksclusters.org/roll-documentation/base/6.1/customization.html
 
-Go back to the `Table of Contents`_
+Go back to the [Table of Contents](#table-of-contents)
 
 ## Installing Triton Rolls
 
@@ -137,7 +137,7 @@ The basic workflow for installing software using the Triton rolls is as follows.
 - `Test Triton Rolls Installation on Frontend`_
 - `Install or Reinstall Nodes`_
 
-Go back to the `Table of Contents`_
+Go back to the [Table of Contents](#table-of-contents)
 
 ### Download Triton Rolls to Development Server
 
@@ -396,7 +396,7 @@ and copied into the SRC directory during the roll build process...
 	intel-tbb-192-4.1-4.noarch.rpm
 	intel-tbb-devel-192-4.1-4.noarch.rpm
 	
-Go back to the `Table of Contents`_
+Go back to the [Table of Contents](#table-of-contents)
 
 ### Build Triton Rolls on Development Server
 
@@ -438,7 +438,7 @@ Verify build completed without errors and produce one (or more) roll ISO files..
 	-rw-r--r-- 1 root root 555038720 Aug 22 10:34 intel-6.1-8.x86_64.disk1.iso
 	-rw-r--r-- 1 root root 497879040 Aug 22 10:34 intel-6.1-8.x86_64.disk2.iso
 
-Go back to the `Table of Contents`_
+Go back to the [Table of Contents](#table-of-contents)
 
 ### Copy Triton Rolls to Frontend
 
@@ -451,7 +451,7 @@ roll onto your Rocks cluster frontend. The easiest way to do this is to use
 	intel-6.1-8.x86_64.disk1.iso                        100%  529MB  52.9MB/s   00:10
 	intel-6.1-8.x86_64.disk2.iso                        100%  475MB  47.5MB/s   00:10
 
-Go back to the `Table of Contents`_
+Go back to the [Table of Contents](#table-of-contents)
 
 ### Install Triton Rolls on Frontend
 
@@ -561,7 +561,7 @@ Verify package availability in Rocks distribution...
 	License     : Intel Copyright 1999-2012
 	Description : Intel(R) Fortran Compiler XE 13.0 Update 1 for Linux*
 
-Go back to the `Table of Contents`_
+Go back to the [Table of Contents](#table-of-contents)
 
 
 ### Test Triton Rolls Installation on Frontend
@@ -615,7 +615,7 @@ Run the intel roll test script...
 	ok 11 - intel version module link created
 	1..11
 
-Go back to the `Table of Contents`_
+Go back to the [Table of Contents](#table-of-contents)
 
 ### Install or Reinstall Nodes
 
@@ -634,4 +634,4 @@ nodes...
 .. _Forcing a Re-install at Next PXE Boot: http://central6.rocksclusters.org/roll-documentation/base/6.1/x1817.html
 .. _Reinstall All Compute Nodes with SGE: http://central6.rocksclusters.org/roll-documentation/base/6.1/sge-cluster-reinstall.html
 
-Go back to the `Table of Contents`_
+Go back to the [Table of Contents](#table-of-contents)
