@@ -17,7 +17,7 @@ your Rocks cluster.
    back to the TOC after each section.
 -->
 
-- `Overview`_
+- [Overview](#overview)
 - `Installing Your Rocks Development Appliance`_
 - `Installing Triton Rolls`_
 	- `Download Triton Rolls to Development Server`_
