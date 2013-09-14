@@ -180,7 +180,6 @@ Once the installation of your node(s) is complete test if you can ``ping`` and
 ```
 
 Return to the [Table of Contents](#table-of-contents)
------
 ..	The content in this file/document is the primary content of the
 	tutorial. Consider making *this* document the actual tutorial and
 	pointing the README.rst file to it. Possibly it should go at/near the
@@ -371,7 +370,6 @@ method described in `Reinstalling Your Development Appliance`_.
 
 
 Return to the [Table of Contents](#table-of-contents)
------
 
 <!--
 ..	Roll testing should be included as a primary step in the roll
@@ -496,7 +494,6 @@ From these outputs you should be able to find out whether or not your rolls have
 been installed correctly.
 
 Return to the [Table of Contents](#table-of-contents)
------
 
 ## Reinstalling Your Development Appliance
 
@@ -535,9 +532,3 @@ Appliance
 
 
 Return to the [Table of Contents](#table-of-contents)
------
-
-
-
-Return to the [Table of Contents](#table-of-contents)
------
