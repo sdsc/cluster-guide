@@ -526,9 +526,7 @@ Return to your Front End and remove the host so that it will reinstall upon boot
 ```
 
 Finally you may reinstall the node and your remaining nodes as compute nodes
-using the *insert ethers* method described in `Installing Your Development
-Appliance
-<https://github.com/sdsc/cluster-guide/blob/master/InstallingDevel.rst>`_.
-
+using the *insert ethers* method described in [Installing Your Development
+Appliance](#installing-your-development-appliance).
 
 Return to the [Table of Contents](#table-of-contents)
