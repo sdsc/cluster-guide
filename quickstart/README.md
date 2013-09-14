@@ -24,9 +24,8 @@ be found in the [Rocks User Guid][rug]
 
 [rug]: http://central6.rocksclusters.org/roll-documentation/base/6.1/ "Rocks Users Guide"
 
-Return to the [Table of Contents](#table-of-contents)
 
------
+Return to the [Table of Contents](#table-of-contents)
 
 ## Setting Up Your Frontend
 
@@ -35,30 +34,24 @@ of Rocks and **install** it on your frontend.
 
 ### Downloading Rocks
 
-The current and past releases of Rocks will be found here:
-
-`Rocks Releases <http://www.rocksclusters.org/wordpress/?page_id=80>`_
+The current and past releases of Rocks can be found on the [Rocks
+Website](http://www.rocksclusters.org/)
 
 Choose the version of Rocks to install.
 
-.. figure images/1Download_Rocks_Cropped.png
-   :align:  center
+!["Rocks Download Page"](images/1Download_Rocks_Cropped.png?raw=true "Rocks Download Page")
 
-   *The download page on the Rocks Website*
-
-Download the individual rolls you will need or simply download the **jumbo
+- Download the individual rolls you will need or simply download the **jumbo
 roll** which has been created to contain a few general rolls for your
 convenience.  *(jumbo roll contains: Boot, Base, Area51, Condor, Ganglia, HPC,
 Java, Perl, Python, Bio, SGE, Web Server, KVM (on the x86_64 version), ZFS & OS
-Rolls)* Burn the ISO to a disc or any other bootable media.
+Rolls)*
+- Burn the ISO to a disc or any other bootable media.
 
 It is recommended that you install at least the following rolls: *Boot, Base,
 Area51, Ganglia, HPC, Java, Perl, Python, Bio, and SGE*
 
-.. figure images/2Roll_Selection_Cropped.png
-   :align:  center
-
-   *The jumbo roll is located on the right*
+!["Roll Selection"](images/2Roll_Selection_Cropped.png?raw=true "Roll Selection")
 
 ### Installing Rocks
 
@@ -77,12 +70,7 @@ the machine and the password for the **root user**.  Installation may take up to
 **20 minutes**.  Please note that if the system posts but does not boot after
 installation, the node may be do to a hardware failure.
 
-
 Return to the [Table of Contents](#table-of-contents)
------
-
-..	This file/document is beyond the scope of this tutorial and should be
-	removed.
 
 ## Using SSH Keys
 
@@ -94,7 +82,9 @@ accessed or corrupted by infiltrating users.
 
 You can create your ssh keys using the following command on your local computer
 
-   ssh-keygen -t dsa
+```
+	ssh-keygen -t dsa
+```
 
 The following text should appear ``Enter file in which to save the key``.  Be
 sure to give the keys a name that will conflict with anyone else's ssh keys. 
@@ -124,15 +114,6 @@ Your ssh key is now on the remote compute.  Keep in mind that when you ssh into
 the computer now it will ask you for the **passphrase** you entered in earlier.
 
 Return to the [Table of Contents](#table-of-contents)
------
-<!--
-..	The 'detail' of this document should be replaced with a reference to
-	the Rocks User Guide. Notable exception, eg. selection of appliance type,
-	should be added. Additionally, deviations for *expected* behavior for a
-	compute node (which is documented in the Rocks User Guide) *might* be
-	added. For example, since the Development Appliance is derived from
-	'server' the /state/partition1 partition is NOT formatted on reinstall.
--->
  
 ## Installing Your Development Appliance
 
@@ -150,17 +131,13 @@ Now open up a terminal on your front end and do the following command
 
 The screen below will then pop up on your terminal:
 
-.. figure images/3insert-ethers_Cropped.png
-   :align:  center
-
-   *The interface for the insert-ethers command*
+!["insert-ethers interface"](images/3insert-ethers_Cropped.png?raw=true "insert-ethers interface")
 
 Select to install a Development Applaince.  Now turn on the desired node and
 wait until it is detected.  When the node is detected you will see the mac
 address of the node in the *Inserted Appliances* window shown below.
 
-.. figure images/4node_discovered_Cropped.png
-   :align:  center
+!["insert-ethers node discovered"](images/4node_discovered_Cropped.png?raw=true "insert-ethers node discovered")
 
    *The node you turned on  will pop up with its mac address and host name*
 
@@ -171,12 +148,11 @@ node is installing you can check its progress by using the command
 ```
 	rocks console devel-0-0
 ```
-*This brings up the window in the picture below*
 
-.. figure images/5rocks-console_Cropped.png
-   :align:  center
+If you have connected to your frontend from a machine with an X server you will
+see the following window displayed...
 
-   *This is the process of the installation of the nodes shown through rocks console*
+!["rocks-console display"](images/5rocks-console_Cropped.png?raw=true "rocks-console display")
 
 If you need to look up the **hostnames** of your nodes then use the command
 
@@ -193,10 +169,7 @@ is done, but at that point you will be able to simply ``ssh`` into it.  When *s
 appear between all of the *()s* you may press the *f8* key to quit the GUI
 without interupting the installation.
 
-.. figure images/6f8_okay_Cropped.png
-   :align:  center
-
-   *Notice the appearance of the **
+!["Exit insert-ethers with <F8>"](images/6f8_okay_Cropped.png?raw=true "Exit insert-ethers with <F8>")
 
 Once the installation of your node(s) is complete test if you can ``ping`` and
 ``ssh`` into all of your nodes
