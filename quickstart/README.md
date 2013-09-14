@@ -96,7 +96,7 @@ will be the password asked from you when you ssh into the remote computers with
 your ssh key.
 
 This will create two files (a public key and a private key).  The files created
-will be located in the */.ssh* directory.  Now you must ``scp`` the generated
+will be located in the *~/.ssh* directory.  Now you must ``scp`` the generated
 keys onto the remote computer (typically your front end that you are accessing)
 
 ```
