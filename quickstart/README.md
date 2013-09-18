@@ -19,7 +19,7 @@ shown in the below flow chart.
 
 Install your Front End
 
-!["Quickstart Guide Overview"](images/newimages/FE_+_CN.png?raw=true "Quickstart GuideOverview")
+!["Quickstart Guide Overview"](images/new_images/FE_+_CN.png?raw=true "Quickstart GuideOverview")
 
 The official and much more lengthy version of the Rocks Installation process can
 be found in the [Rocks User Guid][rug]
