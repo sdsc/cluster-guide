@@ -128,9 +128,7 @@ Included in this repository is the historic source for the entire Rocks software
 stack, a mirror of the current Rocks software stack now published to GitHub and
 all of the published Triton rolls.
 
-<div class="alert tip">
-<strong>Tip:</strong>Eventually the Triton rolls will also be published to GitHub and this repository will remain for archival purposes only.
-</div>
+><strong>Tip:</strong> Eventually the Triton rolls will also be published to GitHub and this repository will remain for archival purposes only.
 
 The basic workflow for installing software using the Triton rolls is as follows...
 
