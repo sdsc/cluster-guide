@@ -263,12 +263,12 @@ and ``ssh`` onto your development server:
 First you must ``cd`` into the directory of the roll
 
 ```
-	cd /state/partition1/triton/src/roll/scar
+	cd /state/partition1/triton/src/roll/intel
 ```
 
 <!--
 ..	Mentioned before that specific rolls should not be mentioned. In
-	particular, the scar roll is very specific to SDSC and should probably
+	particular, the intel roll is very specific to SDSC and should probably
 	not be used as an example here. A more 'generic' roll might be a better
 	choice (ie. intel).
 -->
@@ -302,11 +302,11 @@ frontend to set up the distribution.  Copy the ISOs to a direcory in your home
 directory
 
 ```
-	scp scar-6.1-0.x86_64.disk1.iso root@hpcdev-006:~/rolls_to_add/
+	scp intel-6.1-0.x86_64.disk1.iso root@hpcdev-006:~/rolls_to_add/
 ```
 
 <!--
-..	Aside for the use of scar as an example roll this sequence is
+..	Aside for the use of intel as an example roll this sequence is
 	essentially fine.
 -->
 
@@ -316,8 +316,8 @@ Go back to your frontend and ``cd`` into the directory that you copied the ISO
 over to.  Once there use the following commands
 
 ```
-	rocks add roll scar-6.1-0.x86_64.disk1.iso
-	rocks enable roll scar
+	rocks add roll intel-6.1-0.x86_64.disk1.iso
+	rocks enable roll intel
 ```
 
 In order to set up the distro you must ``cd`` over to the right directory
@@ -394,7 +394,7 @@ The roll should now be added.  One way to see that the rolls are working is to
 run the following command::
 
 ```
-	rocks list host xml compute-0-1 >& ~/xml_files/scar.xml
+	rocks list host xml compute-0-1 >& ~/xml_files/intel.xml
 ```
 
    *This will create an xml file that you can search for errors*
@@ -403,7 +403,7 @@ If the output does not contain errors than it should run fine.  Run a ``grep``
 command to search for errors::
 
 ```
-	grep 'err' ~/xml_files/scar.xml
+	grep 'err' ~/xml_files/intel.xml
 ```
 
 If you do not grep any errors then this test has passed.
