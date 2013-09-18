@@ -82,7 +82,7 @@ instead select 'Development Appliance' as your appliance type.
 
 [rug]: http://central6.rocksclusters.org/roll-documentation/base/6.1/ "Rocks Users Guide"
 
-!["Adding a 'Development Server' appliance with insert-ethers](images/01_insert-ethers_devel-server.png?raw=true "Adding a 'Development Server' appliance with insert-ethers")
+!["Adding a 'Development Server' appliance with insert-ethers](../images/01_insert-ethers_devel-server.png?raw=true "Adding a 'Development Server' appliance with insert-ethers")
 
 Once devel-server-0-0 has completed installation you should verify that you can
 login to the node as root.
