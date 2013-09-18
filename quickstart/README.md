@@ -19,21 +19,21 @@ shown in the below flow chart.
 
 Install your Front End
 
-!["Front End and Compute Nodes"](images/new_images/FE_+_CN.png?raw=true "Front End and Compute Nodes")
+!["Front End and Compute Nodes"](images/FE_+_CN.png?raw=true "Front End and Compute Nodes")
 
 Replace a Compute Node with a Development Appliance
 
 !["Using insert-ethers to replace a Compute Node with a Development Appliance"](images/new_images/FE_+_xCN.png?raw=true "Using insert-ethers to replace a ComputeNode with a Development Appliance")
 
 ```
-insert-ethers --replace devel-0-0
+insert-ethers --replace compute-0-0
 ```
 
-!["Cluster with a Development Appliance"](images/new_images/FE_+_DA_+_CN.png?raw=true "Cluster with a Development Appliance")
+!["Cluster with a Development Appliance"](images/FE_+_DA_+_CN.png?raw=true "Cluster with a Development Appliance")
 
 Install rolls on your cluster
 
-!["Installing rolls process"](images/new_images/Installing_Rolls.png?raw=true "Installing rolls process")
+!["Installing rolls process"](images/Installing_Rolls.png?raw=true "Installing rolls process")
 
 Replace your Development Appliance as a Compute Node
 
@@ -43,7 +43,7 @@ Replace your Development Appliance as a Compute Node
 insert-ethers --replace devel-0-0
 ```
 
-!["Cluster with Compute Nodes"](images/new_images/FE_+_CN.png?raw=true "Cluster with Compute Nodes")
+!["Cluster with Compute Nodes"](images/FE_+_CN.png?raw=true "Cluster with Compute Nodes")
 
 The official and much more lengthy version of the Rocks Installation process can
 be found in the [Rocks User Guid][rug]
@@ -87,7 +87,9 @@ options (you will be able to fill the options in during the installtion, but it
 is easier to input them as options of ``build``).  Boot to the media and do the
 ``build`` command
 
+```
    build IP=192.168.117.5 netmask=255.255.255.128 dns=198.202.75.26 gateway=192.168.117.1
+```
 
    *The IP address is applied to the eth1 port*
 
@@ -157,13 +159,24 @@ Now open up a terminal on your front end and do the following command
 
 The screen below will then pop up on your terminal:
 
-!["insert-ethers interface"](images/3insert-ethers_Cropped.png?raw=true "insert-ethers interface")
+!["insert-ethers interface"](images/01_insert-ethers_devel-server.png?raw=true "insert-ethers interface")
 
 Select to install a Development Applaince.  Now turn on the desired node and
-wait until it is detected.  When the node is detected you will see the mac
+wait until it is detected.  If you are using a KVM connection to see the boot
+of the node you should see the following next few screens.
+
+!["devel-server pxe boot"](images/02_devel-server_pxe_boot_01.png?raw=true "devel-server pxe boot")
+
+!["devel-server pxe boot"](images/03_devel-server_pxe_boot_02.png?raw=true "devel-server pxe boot")
+
+You may encounter disk failures when attempting to reinstall the node.  You will see this screen if you are.
+
+!["insert-ethers node discovered"](images/new_images/04_devel-server_disk_fail.png?raw=true "insert-ethers node discovered")
+
+When the node is detected you will see the mac
 address of the node in the *Inserted Appliances* window shown below.
 
-!["insert-ethers node discovered"](images/4node_discovered_Cropped.png?raw=true "insert-ethers node discovered")
+!["insert-ethers node discovered"](images/05_insert-ethers_devel-server_discovered.png?raw=true "insert-ethers node discovered")
 
    *The node you turned on  will pop up with its mac address and host name*
 
@@ -195,7 +208,7 @@ is done, but at that point you will be able to simply ``ssh`` into it.  When *s
 appear between all of the *()s* you may press the *f8* key to quit the GUI
 without interupting the installation.
 
-!["Exit insert-ethers with <F8>"](images/6f8_okay_Cropped.png?raw=true "Exit insert-ethers with <F8>")
+!["Exit insert-ethers with <F8>"](images/07_insert-ethers_devel-server_kickstart_sent.png?raw=true "Exit insert-ethers with <F8>")
 
 Once the installation of your node(s) is complete test if you can ``ping`` and
 ``ssh`` into all of your nodes
