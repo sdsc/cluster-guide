@@ -17,7 +17,9 @@ while building your Front End and its nodes..  While doing this you will create
 the roll distrobution for your nodes on your Front End.  This process is briefly
 shown in the below flow chart.
 
-!["Quickstart Guide Overview"](images/0FlowChart.png?raw=true "Quickstart GuideOverview")
+!["Quickstart Guide Overview"](images/ClusterGuideFlowChart_01.png?raw=true "Quickstart Guide Overview")
+!["Quickstart Guide Overview"](images/ClusterGuideFlowChart_02.png?raw=true "Quickstart Guide Overview")
+!["Quickstart Guide Overview"](images/ClusterGuideFlowChart_04.png?raw=true "Quickstart Guide Overview")
 
 The official and much more lengthy version of the Rocks Installation process can
 be found in the [Rocks User Guid][rug]
