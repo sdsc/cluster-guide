@@ -17,16 +17,11 @@ while building your Front End and its nodes..  While doing this you will create
 the roll distrobution for your nodes on your Front End.  This process is briefly
 shown in the below flow chart.
 
-<<<<<<< HEAD
-!["Quickstart Guide Overview"](images/ClusterGuideFlowChart_01.png?raw=true "Quickstart Guide Overview")
-!["Quickstart Guide Overview"](images/ClusterGuideFlowChart_02.png?raw=true "Quickstart Guide Overview")
-!["Quickstart Guide Overview"](images/ClusterGuideFlowChart_04.png?raw=true "Quickstart Guide Overview")
-=======
-Install your Front End
+### Install your Front End
 
 !["Front End and Compute Nodes"](images/FE_+_CN.png?raw=true "Front End and Compute Nodes")
 
-Replace a Compute Node with a Development Appliance
+### Replace a Compute Node with a Development Appliance
 
 !["Using insert-ethers to replace a Compute Node with a Development Appliance"](images/FE_+_xCN.png?raw=true "Using insert-ethers to replace a ComputeNode with a Development Appliance")
 
@@ -36,11 +31,11 @@ insert-ethers --replace compute-0-0
 
 !["Cluster with a Development Appliance"](images/FE_+_DA_+_CN.png?raw=true "Cluster with a Development Appliance")
 
-Install rolls on your cluster
+### Install rolls on your cluster
 
 !["Installing rolls process"](images/Installing_Rolls.png?raw=true "Installing rolls process")
 
-Replace your Development Appliance as a Compute Node
+### Replace your Development Appliance as a Compute Node
 
 !["Using insert-ethers to replace a Development Appliance with a Compute Node"](images/FE_+_xDA_+_CN.png?raw=true "Using insert-ethers to replace a Development Appliance with a Compute Node")
 
@@ -49,13 +44,11 @@ insert-ethers --replace devel-0-0
 ```
 
 !["Cluster with Compute Nodes"](images/FE_+_CN.png?raw=true "Cluster with Compute Nodes")
->>>>>>> pr/1
 
 The official and much more lengthy version of the Rocks Installation process can
 be found in the [Rocks User Guid][rug]
 
 [rug]: http://central6.rocksclusters.org/roll-documentation/base/6.1/ "Rocks Users Guide"
-
 
 Return to the [Table of Contents](#table-of-contents)
 
