@@ -23,7 +23,7 @@ Install your Front End
 
 Replace a Compute Node with a Development Appliance
 
-!["Using insert-ethers to replace a Compute Node with a Development Appliance"](images/new_images/FE_+_xCN.png?raw=true "Using insert-ethers to replace a ComputeNode with a Development Appliance")
+!["Using insert-ethers to replace a Compute Node with a Development Appliance"](images/FE_+_xCN.png?raw=true "Using insert-ethers to replace a ComputeNode with a Development Appliance")
 
 ```
 insert-ethers --replace compute-0-0
