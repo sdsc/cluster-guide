@@ -1,1 +1,0 @@
-These .rst files are left in the format used with Sphinx.
