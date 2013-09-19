@@ -170,7 +170,7 @@ of the node you should see the following next few screens.
 
 You may encounter disk failures when attempting to reinstall the node.  You will see this screen if you are.
 
-!["insert-ethers node discovered"](images/new_images/04_devel-server_disk_fail.png?raw=true "insert-ethers node discovered")
+!["insert-ethers node discovered"](images/04_devel-server_disk_fail.png?raw=true "insert-ethers node discovered")
 
 When the node is detected you will see the mac
 address of the node in the *Inserted Appliances* window shown below.
