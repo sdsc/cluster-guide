@@ -37,7 +37,7 @@ Install rolls on your cluster
 
 Replace your Development Appliance as a Compute Node
 
-!["Using insert-ethers to replace a Development Appliance with a Compute Node"](images/new_images/FE_+_xDA_+_CN.png?raw=true "Using insert-ethers to replace a Development Appliance with a Compute Node")
+!["Using insert-ethers to replace a Development Appliance with a Compute Node"](images/FE_+_xDA_+_CN.png?raw=true "Using insert-ethers to replace a Development Appliance with a Compute Node")
 
 ```
 insert-ethers --replace devel-0-0
