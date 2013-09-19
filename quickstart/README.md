@@ -17,9 +17,39 @@ while building your Front End and its nodes..  While doing this you will create
 the roll distrobution for your nodes on your Front End.  This process is briefly
 shown in the below flow chart.
 
+<<<<<<< HEAD
 !["Quickstart Guide Overview"](images/ClusterGuideFlowChart_01.png?raw=true "Quickstart Guide Overview")
 !["Quickstart Guide Overview"](images/ClusterGuideFlowChart_02.png?raw=true "Quickstart Guide Overview")
 !["Quickstart Guide Overview"](images/ClusterGuideFlowChart_04.png?raw=true "Quickstart Guide Overview")
+=======
+Install your Front End
+
+!["Front End and Compute Nodes"](images/FE_+_CN.png?raw=true "Front End and Compute Nodes")
+
+Replace a Compute Node with a Development Appliance
+
+!["Using insert-ethers to replace a Compute Node with a Development Appliance"](images/FE_+_xCN.png?raw=true "Using insert-ethers to replace a ComputeNode with a Development Appliance")
+
+```
+insert-ethers --replace compute-0-0
+```
+
+!["Cluster with a Development Appliance"](images/FE_+_DA_+_CN.png?raw=true "Cluster with a Development Appliance")
+
+Install rolls on your cluster
+
+!["Installing rolls process"](images/Installing_Rolls.png?raw=true "Installing rolls process")
+
+Replace your Development Appliance as a Compute Node
+
+!["Using insert-ethers to replace a Development Appliance with a Compute Node"](images/FE_+_xDA_+_CN.png?raw=true "Using insert-ethers to replace a Development Appliance with a Compute Node")
+
+```
+insert-ethers --replace devel-0-0
+```
+
+!["Cluster with Compute Nodes"](images/FE_+_CN.png?raw=true "Cluster with Compute Nodes")
+>>>>>>> pr/1
 
 The official and much more lengthy version of the Rocks Installation process can
 be found in the [Rocks User Guid][rug]
@@ -63,7 +93,9 @@ options (you will be able to fill the options in during the installtion, but it
 is easier to input them as options of ``build``).  Boot to the media and do the
 ``build`` command
 
+```
    build IP=192.168.117.5 netmask=255.255.255.128 dns=198.202.75.26 gateway=192.168.117.1
+```
 
    *The IP address is applied to the eth1 port*
 
@@ -133,13 +165,24 @@ Now open up a terminal on your front end and do the following command
 
 The screen below will then pop up on your terminal:
 
-!["insert-ethers interface"](images/3insert-ethers_Cropped.png?raw=true "insert-ethers interface")
+!["insert-ethers interface"](images/01_insert-ethers_devel-server.png?raw=true "insert-ethers interface")
 
 Select to install a Development Applaince.  Now turn on the desired node and
-wait until it is detected.  When the node is detected you will see the mac
+wait until it is detected.  If you are using a KVM connection to see the boot
+of the node you should see the following next few screens.
+
+!["devel-server pxe boot"](images/02_devel-server_pxe_boot_01.png?raw=true "devel-server pxe boot")
+
+!["devel-server pxe boot"](images/03_devel-server_pxe_boot_02.png?raw=true "devel-server pxe boot")
+
+You may encounter disk failures when attempting to reinstall the node.  You will see this screen if you are.
+
+!["insert-ethers node discovered"](images/new_images/04_devel-server_disk_fail.png?raw=true "insert-ethers node discovered")
+
+When the node is detected you will see the mac
 address of the node in the *Inserted Appliances* window shown below.
 
-!["insert-ethers node discovered"](images/4node_discovered_Cropped.png?raw=true "insert-ethers node discovered")
+!["insert-ethers node discovered"](images/05_insert-ethers_devel-server_discovered.png?raw=true "insert-ethers node discovered")
 
    *The node you turned on  will pop up with its mac address and host name*
 
@@ -171,7 +214,7 @@ is done, but at that point you will be able to simply ``ssh`` into it.  When *s
 appear between all of the *()s* you may press the *f8* key to quit the GUI
 without interupting the installation.
 
-!["Exit insert-ethers with <F8>"](images/6f8_okay_Cropped.png?raw=true "Exit insert-ethers with <F8>")
+!["Exit insert-ethers with <F8>"](images/07_insert-ethers_devel-server_kickstart_sent.png?raw=true "Exit insert-ethers with <F8>")
 
 Once the installation of your node(s) is complete test if you can ``ping`` and
 ``ssh`` into all of your nodes
@@ -265,12 +308,12 @@ and ``ssh`` onto your development server:
 First you must ``cd`` into the directory of the roll
 
 ```
-	cd /state/partition1/triton/src/roll/scar
+	cd /state/partition1/triton/src/roll/intel
 ```
 
 <!--
 ..	Mentioned before that specific rolls should not be mentioned. In
-	particular, the scar roll is very specific to SDSC and should probably
+	particular, the intel roll is very specific to SDSC and should probably
 	not be used as an example here. A more 'generic' roll might be a better
 	choice (ie. intel).
 -->
@@ -304,11 +347,11 @@ frontend to set up the distribution.  Copy the ISOs to a direcory in your home
 directory
 
 ```
-	scp scar-6.1-0.x86_64.disk1.iso root@hpcdev-006:~/rolls_to_add/
+	scp intel-6.1-0.x86_64.disk1.iso root@hpcdev-006:~/rolls_to_add/
 ```
 
 <!--
-..	Aside for the use of scar as an example roll this sequence is
+..	Aside for the use of intel as an example roll this sequence is
 	essentially fine.
 -->
 
@@ -318,8 +361,8 @@ Go back to your frontend and ``cd`` into the directory that you copied the ISO
 over to.  Once there use the following commands
 
 ```
-	rocks add roll scar-6.1-0.x86_64.disk1.iso
-	rocks enable roll scar
+	rocks add roll intel-6.1-0.x86_64.disk1.iso
+	rocks enable roll intel
 ```
 
 In order to set up the distro you must ``cd`` over to the right directory
@@ -396,7 +439,7 @@ The roll should now be added.  One way to see that the rolls are working is to
 run the following command::
 
 ```
-	rocks list host xml compute-0-1 >& ~/xml_files/scar.xml
+	rocks list host xml compute-0-1 >& ~/xml_files/intel.xml
 ```
 
    *This will create an xml file that you can search for errors*
@@ -405,7 +448,7 @@ If the output does not contain errors than it should run fine.  Run a ``grep``
 command to search for errors::
 
 ```
-	grep 'err' ~/xml_files/scar.xml
+	grep 'err' ~/xml_files/intel.xml
 ```
 
 If you do not grep any errors then this test has passed.
