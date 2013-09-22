@@ -235,6 +235,7 @@ quit the GUI without interupting the installation.
 Once the installation of your node(s) is complete test if you can ``ping`` and
 ``ssh`` into all of your nodes
 
+Ping 
 ```
 	ping frontend
 ```
@@ -245,6 +246,7 @@ Output
     64 bytes from frontend (192.168.117.10): icmp_seq=2 ttl=63 time=0.253 ms
     64 bytes from frontend (192.168.117.10): icmp_seq=3 ttl=63 time=0.259 ms
 ```
+SSH
 ```
 	ssh frontend
 ```
@@ -255,15 +257,13 @@ Last login: Wed Sep 18 09:36:02 2013 from cpe-75-80-151-205.san.res.rr.com
 ```
 
 Return to the [Table of Contents](#table-of-contents)
-..	The content in this file/document is the primary content of the
-	tutorial. Consider making *this* document the actual tutorial and
-	pointing the README.rst file to it. Possibly it should go at/near the
-	'top' of the Triton roll repository root.
 
 ## Installing Rocks Rolls
 
-Throughout this tutorial bear in mind that being in **root** is potentially
-dangerous to your system
+Throughout this tutorial bear in mind that executing commands while logged in 
+as the root user is potentially dangerous. Use caution and double-check commands 
+before executing them. This is the primary reason for building rolls on a 
+development appliance as it can help keep you from messing up your frontend.
 
 In order to avoid unnecessary reinstallations of your frontend, please do all
 ``make`` commands for creating ISOs on the development appliance.  This is to
@@ -274,12 +274,12 @@ frontend.  You may always reinstall your nodes if an error were to occur.
 ..	Rocks convention is to call the primary host the frontend not *front end*
 -->
 
-### How To Get The Triton Repo
+### How To Get The Triton Rolls
 
-The Triton Repo is located in GitHub.  A bash script has been supplied below in
-order for you to use git clone to acquire your own copy:
+The Triton Rolls are located on the [Rocks Cluster Website](http://git.rocksclusters.org/cgi-bin/gitweb.cgi). A bash script has been supplied below in order for you to use git clone to 
+acquire your own copy:
 
-https://raw.github.com/sdsc/cluster-guide/master/triton_repo_script.sh
+[Triton Rolls Script](https://raw.github.com/sdsc/cluster-guide/master/scripts/triton_rolls_script.sh)
 
 ```
 	#/bin/bash
@@ -321,15 +321,6 @@ Typically the rolls that need to be installed manually are:
 ..	See previous comment about naming specific Triton repos.
 -->
 
-For more information read **triton/src/roll/bootstrap.sh**, which is located in
-the code drop from the Triton Repository. ``scp`` the files onto your
-*devel-server-0-0* into a place with enough space such as */state/partition1/*
-and ``ssh`` onto your development server:
-
-<!--
-..	The mentioned bootstrap.sh script is NOT pulled from the Triton Repository.
--->
-
 ```
 	scp $TRITONREPO root@devel-server-0-0:/state/partition1/
 	ssh root@devel-server-0-0
@@ -356,7 +347,12 @@ by using the following command
 	make default 2>&1 | tee log
 ```
 
-*This pipe will create a log file located in the roll's directory*
+*This pipe will create a log file located in the roll's directory
+
+1 is stdout. 2 is stderr.
+
+It will be interpreted as "redirect stderr to a file named 1". & indicates 
+that what follows is a file descriptor and not a filename.*
 
 In the log files you may use this command to check for errors
 
@@ -387,7 +383,7 @@ directory
 
 ### Installing the Roll
 
-Go back to your frontend and ``cd`` into the directory that you copied the ISO
+Login on your frontend and ``cd`` into the directory that you copied the ISO
 over to.  Once there use the following commands
 
 ```
@@ -399,12 +395,6 @@ In order to set up the distro you must ``cd`` over to the right directory
 
 ```
 	cd /export/rocks/install
-```
-
-Once there you may create the distro by running
-
-```
-	rocks create distro
 ```
 
 You may check to see if your roll has been properly added and enabled by using
@@ -422,9 +412,16 @@ The output for this command will be
 	kvm:          6.1        x86_64 yes    
 	web-server:   6.1        x86_64 yes    
 	bio:          6.1        x86_64 yes 
+	intel:        6.1        x86_64 yes
 ```
 
    *Look for the name of the roll in the first column*
+
+Once there you may create the distro by running
+
+```
+	rocks create distro
+```
 
 <!--
 ..	All essentially fine.
@@ -433,7 +430,7 @@ The output for this command will be
 Repeat these steps for each roll that needs to be installed.  When you run into
 an error building an ISO on the development appliance it may be due to the
 dependencies.  If this is the case you must reinstall the node by doing the
-method described in `Reinstalling Your Development Appliance`_.
+method described in [Reinstalling Your Development Appliance](#reinstalling-your-development-appliance).
 
 <!--
 ..	This is an interesting problem and should be expanded upon. Simply
@@ -459,7 +456,7 @@ There are a few ways that you can test whether or not a roll has been
 successfully installed on a cluster.  These debugging methods are discussed in
 detail on the Rocks Clusters documentation site listed below.
 
-`Rocks Cluster Debugging <http://www.rocksclusters.org/roll-documentation/developers-guide/5.4.3/testing-post.html>`_
+[Rocks Cluster Debugging](http://www.rocksclusters.org/roll-documentation/developers-guide/5.4.3/testing-post.html)
 
 Below are a few debugging tests that you may also use.
 
@@ -474,7 +471,7 @@ run the following command::
 
    *This will create an xml file that you can search for errors*
 
-If the output does not contain errors than it should run fine.  Run a ``grep``
+If the output does not contain errors then the roll should have installed correctly.  Run a ``grep``
 command to search for errors::
 
 ```
@@ -485,9 +482,10 @@ If you do not grep any errors then this test has passed.
 
 ### The Perl Script Test
 
-A Perl script is installed with each of the roll installations to test whether
-or not the roll has been properly installed.  First you must change directory
-into the directory that the scripts are installed into::
+A Perl script may be installed with each of the roll installations after running 
+``rocks run roll <rollname> | bash`` on the front end after rebuilding the 
+distro to test whetheror not the roll has been properly installed.  First you 
+must change directory into the directory that the scripts are installed into::
 
 ```
 	cd /root/rolltests/
@@ -642,7 +640,7 @@ Return to the [Table of Contents](#table-of-contents)
 
 ## Reinstalling Your Development Appliance
 
-You will need to reinstall your Development Appliance as a Compute Node.  In
+You may wish to reinstall your Development Appliance as a Compute Node.  In
 order to do so you must first remove it as an installed appliance on your Front
 End.
 
@@ -661,8 +659,14 @@ ensure its boot settings are set to pxe and reboot the node::
 	shutdown
 ```
 
-*If you are reinstalling your Development Appliance due to dependencies then
-perform a ``reboot`` instead of a ``shutdown``*
+*Your nodes may be required to be reinstalled so that the installed rolls on the 
+frontend are installed on your nodes clearing up any dependency issures.  If you 
+are reinstalling your Development Appliance for this reason thenperform a ``reboot`` 
+instead of a ``shutdown``*
+
+``ipmitool`` is being used to changed the settings of your node to conduct a pxe boot.
+This needs to be changed using ipmitool because it is a setting outside of your UNIX 
+installation.
 
 Return to your Front End and remove the host so that it will reinstall upon boot::
 
