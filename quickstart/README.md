@@ -12,6 +12,16 @@
 
 ## Overview of the Quickstart Guide
 
+What you will need:
+
+- frontend
+- one or more nodes
+- switch
+- internet connection
+- CD/DVD media
+- CD/DVD burner
+- necessary wires for power and connection to internet and switch
+
 In this documentation you will learn how to install the latest version of Rocks
 while building your Front End and its nodes..  While doing this you will create
 the roll distrobution for your nodes on your Front End.  This process is briefly
@@ -40,7 +50,7 @@ Replace your Development Appliance as a Compute Node
 !["Using insert-ethers to replace a Development Appliance with a Compute Node"](images/FE_+_xDA_+_CN.png?raw=true "Using insert-ethers to replace a Development Appliance with a Compute Node")
 
 ```
-insert-ethers --replace devel-0-0
+insert-ethers --replace devel-server-0-0
 ```
 
 !["Cluster with Compute Nodes"](images/FE_+_CN.png?raw=true "Cluster with Compute Nodes")
@@ -67,9 +77,13 @@ Choose the version of Rocks to install.
 
 !["Rocks Download Page"](images/1Download_Rocks_Cropped.png?raw=true "Rocks Download Page")
 
+- Determine whether your CPU architecture is 32-bit or 64-bit.  You can run the 
+command ``lscpu`` and refer to the "CPU op-modes(s):" section.
+- If your system does not support the 64-bit software then you will only be able to 
+install rolls under "i386"
 - Download the individual rolls you will need or simply download the **jumbo
-roll** which has been created to contain a few general rolls for your
-convenience.  *(jumbo roll contains: Boot, Base, Area51, Condor, Ganglia, HPC,
+(DVD) ISO** which has been created to contain a few general rolls for your
+convenience.  *(jumbo (DVD) ISO contains: Boot, Base, Area51, Condor, Ganglia, HPC,
 Java, Perl, Python, Bio, SGE, Web Server, KVM (on the x86_64 version), ZFS & OS
 Rolls)*
 - Burn the ISO to a disc or any other bootable media.
@@ -84,14 +98,16 @@ Area51, Ganglia, HPC, Java, Perl, Python, Bio, and SGE*
 Be aware that when the Rocks Installation boots, if you do not press any button
 the ``build`` command will automatically run without clarification of any of the
 options (you will be able to fill the options in during the installtion, but it
-is easier to input them as options of ``build``).  Boot to the media and do the
-``build`` command
+is easier to input them as options of ``build``).  Boot to the media and do the 
+command ``build``.
 
 ```
    build IP=192.168.117.5 netmask=255.255.255.128 dns=198.202.75.26 gateway=192.168.117.1
 ```
 
-   *The IP address is applied to the eth1 port*
+   *The above is an example of what you can input for the fields.  If you are unsure 
+   of what to input, then contact your network administrator.  The IP address is 
+   applied to the eth1 port*
 
 Continue to follow the instructions presented to you as it asks for the name of
 the machine and the password for the **root user**.  Installation may take up to
@@ -105,6 +121,9 @@ Return to the [Table of Contents](#table-of-contents)
 SSH Keys allow an extra layer of security for your cluster and any other cluster
 you access.  It is good practice to use SSH Keys to prevent your data from being
 accessed or corrupted by infiltrating users.
+
+SSH is required to access the cluster as you cannot use Telnet or RSH and using 
+SSH keys will make it easier to access the cluster.
 
 ### Setting Up SSH Keys
 
@@ -128,14 +147,14 @@ will be located in the *~/.ssh* directory.  Now you must ``scp`` the generated
 keys onto the remote computer (typically your front end that you are accessing)
 
 ```
-	scp ~/.ssh/gsiman_dsa.pub root@hpcdev-006:.ssh/gsiman_dsa.pub
+	scp ~/.ssh/<user>_dsa.pub root@frontend:.ssh/<user>_dsa.pub
 ```
 
 Then ``ssh`` onto your front end and ``cd`` into the */.ssh* directory.  Append
 the key you copied in to the *authorized_keys* file by doing
 
 ```
-	cat gsiman_dsa.pub >> authorized_keys
+	cat <user>_dsa.pub >> authorized_keys
 ```
 
 Your ssh key is now on the remote compute.  Keep in mind that when you ssh into
@@ -144,6 +163,8 @@ the computer now it will ask you for the **passphrase** you entered in earlier.
 Return to the [Table of Contents](#table-of-contents)
  
 ## Installing Your Development Appliance
+
+!["Cluster with a Development Appliance"](images/FE_+_DA_+_CN.png?raw=true "Cluster with a Development Appliance")
 
 After connecting all the hardware up through a switch on their *eth0* ports to
 connect all the nodes up to the front end, make sure that all the nodes are off.
@@ -154,7 +175,7 @@ command for more information on rocks commands.
 Now open up a terminal on your front end and do the following command
 
 ```
-	insert-ethers --basename devel
+	insert-ethers
 ```
 
 The screen below will then pop up on your terminal:
@@ -162,14 +183,15 @@ The screen below will then pop up on your terminal:
 !["insert-ethers interface"](images/01_insert-ethers_devel-server.png?raw=true "insert-ethers interface")
 
 Select to install a Development Applaince.  Now turn on the desired node and
-wait until it is detected.  If you are using a KVM connection to see the boot
-of the node you should see the following next few screens.
+wait until it is detected.  The boot screens were captured to be the following 
+next few screens.
 
 !["devel-server pxe boot"](images/02_devel-server_pxe_boot_01.png?raw=true "devel-server pxe boot")
 
 !["devel-server pxe boot"](images/03_devel-server_pxe_boot_02.png?raw=true "devel-server pxe boot")
 
-You may encounter disk failures when attempting to reinstall the node.  You will see this screen if you are.
+You may encounter disk failures when attempting to reinstall the node.  You will 
+see this screen if you are.
 
 !["insert-ethers node discovered"](images/new_images/04_devel-server_disk_fail.png?raw=true "insert-ethers node discovered")
 
@@ -185,7 +207,7 @@ until it is safe to do so (this is explained later in this tutorial).  When a
 node is installing you can check its progress by using the command
 
 ```
-	rocks console devel-0-0
+	rocks console devel-server-0-0
 ```
 
 If you have connected to your frontend from a machine with an X server you will
@@ -199,14 +221,14 @@ If you need to look up the **hostnames** of your nodes then use the command
 	[gsiman@hpcdev-006 ~]$ rocks list host
 	HOST              MEMBERSHIP   CPUS RACK RANK RUNACTION INSTALLACTION
 	hpcdev-006:       Frontend     8    0    0    os        install
-	devel-0-0:        Development  16   0    0    os        install
+	devel-server-0-0:        Development  16   0    0    os        install
 ```
    *The hostnames are in the first column*
 
 You will not be able to use the ``rocks console`` command once the installation
-is done, but at that point you will be able to simply ``ssh`` into it.  When *s
-appear between all of the *()s* you may press the *f8* key to quit the GUI
-without interupting the installation.
+is done, but at that point you will be able to simply ``ssh`` into it.  When an
+asterisk charater appears between all of the *()s* you may press the *f8* key to 
+quit the GUI without interupting the installation.
 
 !["Exit insert-ethers with <F8>"](images/07_insert-ethers_devel-server_kickstart_sent.png?raw=true "Exit insert-ethers with <F8>")
 
@@ -214,8 +236,22 @@ Once the installation of your node(s) is complete test if you can ``ping`` and
 ``ssh`` into all of your nodes
 
 ```
-	ping devel-0-0
-	ssh devel-0-0
+	ping frontend
+```
+Output
+```
+    PING frontend (192.168.117.10) 56(84) bytes of data.
+    64 bytes from frontend (192.168.117.10): icmp_seq=1 ttl=63 time=0.277 ms
+    64 bytes from frontend (192.168.117.10): icmp_seq=2 ttl=63 time=0.253 ms
+    64 bytes from frontend (192.168.117.10): icmp_seq=3 ttl=63 time=0.259 ms
+```
+```
+	ssh frontend
+```
+Output
+```
+<user>@frontend's password:
+Last login: Wed Sep 18 09:36:02 2013 from cpe-75-80-151-205.san.res.rr.com
 ```
 
 Return to the [Table of Contents](#table-of-contents)
@@ -341,7 +377,7 @@ frontend to set up the distribution.  Copy the ISOs to a direcory in your home
 directory
 
 ```
-	scp intel-6.1-0.x86_64.disk1.iso root@hpcdev-006:~/rolls_to_add/
+	scp intel-6.1-0.x86_64.disk1.iso root@frontend:~/rolls_to_add/
 ```
 
 <!--
@@ -613,14 +649,14 @@ End.
 First set the boot action to install on the Front End by inputing::
 
 ```
-	rocks set host boot devel-0-0 action=install
+	rocks set host boot devel-server-0-0 action=install
 ```
 
 ``ssh`` into the appliance you are reinstalling and change its settings to
 ensure its boot settings are set to pxe and reboot the node::
 
 ```
-	ssh devel-0-0
+	ssh devel-server-0-0
 	ipmitool chassis bootdev pxe options=persistent
 	shutdown
 ```
@@ -631,7 +667,7 @@ perform a ``reboot`` instead of a ``shutdown``*
 Return to your Front End and remove the host so that it will reinstall upon boot::
 
 ```
-	rocks remove host devel-0-0
+	rocks remove host devel-server-0-0
 ```
 
 Finally you may reinstall the node and your remaining nodes as compute nodes
