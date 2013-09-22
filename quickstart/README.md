@@ -462,71 +462,141 @@ check which of the rolls you installed have perl scripts.  To run a Perl scripts
 simply put in the following command::
 
 ```
-	perl scar.t
+	perl intel.t
 ```
 
 This will automatically run a script which should create an output similar to
-the following::
+the following scenarios.
+
+Intel compilers and license installed correctly::
 
 ```
-	[root@hpcdev-01 rolltests]# perl scar.t
-	ok 1 - gfortran installed
-	ok 2 - g++ installed
-	ok 3 - ipmi installed
-	ok 4 - gdb installed
-	ok 5 - sysstat installed
-	ok 6 - xterm installed
-	ok 7 - php installed
-	ok 8 - emacs installed
-	ok 9 - gnu module installed
-	ok 10 - gnu version module installed
-	ok 11 - gnu version module link created
-	ok 12 - module search path set up
-	ok 13 - audit service created
-	ok 14 - audit config created
-	ok 15 - audit rules added
-	/etc/init.d/audit: line 37: auditctl: command not found
-	not ok 16 - audit running
-	#   Failed test 'audit running'
-	#   at scar.t line 38.
-	#                   ''
-	#     doesn't match '(?-xism:LIST_RULES)'
-	ok 17 # skip not compute node
-	ok 18 # skip not compute node
-	ok 19 # skip not compute node
-	ok 20 # skip not compute node
-	ok 21 # skip not compute node
-	ok 22 # skip not compute node
-	ok 23 # skip not compute node
-	ok 24 # skip not compute node
-	ok 25 # skip not compute node
-	ok 26 # skip not compute node
-	ok 27 # skip not login node
-	ok 28 # skip not login node
-	ok 29 # skip not login node
-	ok 30 # skip not login node
-	ok 31 # skip not login node
-	ok 32 # skip not login node
-	ok 33 # skip not login node
-	ok 34 # skip not login node
-	ok 35 # skip not login node
-	ok 36 # skip not login node
-	ok 37 # skip not login node
-	ok 38 # skip not login node
-	ok 39 # skip not login node
-	ok 40 # skip not login node
-	ok 41 # skip not login node
-	ok 42 # skip not login node
-	ok 43 - scar library installed
-	ok 44 - sphinx installed
-	ok 45 - scar scripts installed
-	ok 46 - sphinx installed
-	ok 47 - gmond config modified
-	ok 48 - login appliance defined
-	ok 49 - PYTHONPATH modified
-	ok 50 - install x11 on compute nodes
-	1..50
-	# Looks like you failed 1 test of 50.
+[root@frontend ~]# ./rolltests/intel.t
+ok 1 - intel compilers installed
+ok 2 - intel C compiler works
+ok 3 - compiled C program runs
+ok 4 - compile C program correct output
+ok 5 - intel FORTRAN compiler works
+ok 6 - compiled FORTRAN program runs
+ok 7 - compile FORTRAN program correct output
+ok 8 - man works for intel
+ok 9 - intel module installed
+ok 10 - intel version module installed
+ok 11 - intel version module link created
+1..11
+```
+
+Intel compilers not installed/available::
+
+```
+[root@frontend ~]# ./rolltests/intel.t
+not ok 1 - intel compilers installed
+#   Failed test 'intel compilers installed'
+#   at ./rolltests/intel.t line 34.
+ok 2 # skip intel compilers not installed
+ok 3 # skip intel compilers not installed
+ok 4 # skip intel compilers not installed
+ok 5 # skip intel compilers not installed
+ok 6 # skip intel compilers not installed
+ok 7 # skip intel compilers not installed
+ok 8 # skip intel compilers not installed
+ok 9 # skip intel compilers not installed
+ok 10 # skip intel compilers not installed
+ok 11 # skip intel compilers not installed
+1..11
+# Looks like you failed 1 test of 11.
+```
+
+Intel compilers installed but module file(s) not installed/loaded correctly (modules loaded automatically by intel.t)::
+
+```
+[root@frontend ~]# ./rolltests/intel.t
+ok 1 - intel compilers installed
+find: `/opt/modulefiles': No such file or directory
+ModuleCmd_Load.c(200):ERROR:105: Unable to locate a modulefile for 'intel'
+not ok 2 - intel C compiler works
+#   Failed test 'intel C compiler works'
+#   at ./rolltests/intel.t line 48.
+find: `/opt/modulefiles': No such file or directory
+ModuleCmd_Load.c(200):ERROR:105: Unable to locate a modulefile for 'intel'
+sh: ./tmpintel: No such file or directory
+not ok 3 - compiled C program runs
+#   Failed test 'compiled C program runs'
+#   at ./rolltests/intel.t line 50.
+not ok 4 - compile C program correct output
+#   Failed test 'compile C program correct output'
+#   at ./rolltests/intel.t line 51.
+#                   ''
+#     doesn't match '(?-xism:Hello world)'
+find: `/opt/modulefiles': No such file or directory
+ModuleCmd_Load.c(200):ERROR:105: Unable to locate a modulefile for 'intel'
+not ok 5 - intel FORTRAN compiler works
+#   Failed test 'intel FORTRAN compiler works'
+#   at ./rolltests/intel.t line 54.
+find: `/opt/modulefiles': No such file or directory
+ModuleCmd_Load.c(200):ERROR:105: Unable to locate a modulefile for 'intel'
+sh: ./tmpintel: No such file or directory
+not ok 6 - compiled FORTRAN program runs
+#   Failed test 'compiled FORTRAN program runs'
+#   at ./rolltests/intel.t line 56.
+not ok 7 - compile FORTRAN program correct output
+#   Failed test 'compile FORTRAN program correct output'
+#   at ./rolltests/intel.t line 57.
+#                   ''
+#     doesn't match '(?-xism:Hello world)'
+find: `/opt/modulefiles': No such file or directory
+ModuleCmd_Load.c(200):ERROR:105: Unable to locate a modulefile for 'intel'
+not ok 8 - man works for intel
+#   Failed test 'man works for intel'
+#   at ./rolltests/intel.t line 60.
+not ok 9 - intel module installed
+#   Failed test 'intel module installed'
+#   at ./rolltests/intel.t line 64.
+not ok 10 - intel version module installed
+#   Failed test 'intel version module installed'
+#   at ./rolltests/intel.t line 66.
+not ok 11 - intel version module link created
+#   Failed test 'intel version module link created'
+#   at ./rolltests/intel.t line 67.
+1..11
+# Looks like you failed 10 tests of 11.
+```
+
+Intel compilers installed without license (real or demo) installed::
+
+```
+[root@frontend ~]# ./rolltests/intel.t
+ok 1 - intel compilers installed
+not ok 2 - intel C compiler works
+#   Failed test 'intel C compiler works'
+#   at ./rolltests/intel.t line 48.
+sh: ./tmpintel: No such file or directory
+not ok 3 - compiled C program runs
+#   Failed test 'compiled C program runs'
+#   at ./rolltests/intel.t line 50.
+not ok 4 - compile C program correct output
+#   Failed test 'compile C program correct output'
+#   at ./rolltests/intel.t line 51.
+#                   ''
+#     doesn't match '(?-xism:Hello world)'
+not ok 5 - intel FORTRAN compiler works
+#   Failed test 'intel FORTRAN compiler works'
+#   at ./rolltests/intel.t line 54.
+sh: ./tmpintel: No such file or directory
+not ok 6 - compiled FORTRAN program runs
+#   Failed test 'compiled FORTRAN program runs'
+#   at ./rolltests/intel.t line 56.
+not ok 7 - compile FORTRAN program correct output
+#   Failed test 'compile FORTRAN program correct output'
+#   at ./rolltests/intel.t line 57.
+#                   ''
+#     doesn't match '(?-xism:Hello world)'
+ok 8 - man works for intel
+ok 9 - intel module installed
+ok 10 - intel version module installed
+ok 11 - intel version module link created
+1..11
+# Looks like you failed 6 tests of 11.
 ```
 
 From these outputs you should be able to find out whether or not your rolls have
