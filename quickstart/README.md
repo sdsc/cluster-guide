@@ -12,6 +12,16 @@
 
 ## Overview of the Quickstart Guide
 
+What you will need:
+
+- frontend
+- one or more nodes
+- switch
+- internet connection
+- CD/DVD media
+- CD/DVD burner
+- necessary wires for power and connection to internet and switch
+
 In this documentation you will learn how to install the latest version of Rocks
 while building your Front End and its nodes..  While doing this you will create
 the roll distrobution for your nodes on your Front End.  This process is briefly
@@ -40,7 +50,7 @@ insert-ethers --replace compute-0-0
 !["Using insert-ethers to replace a Development Appliance with a Compute Node"](images/FE_+_xDA_+_CN.png?raw=true "Using insert-ethers to replace a Development Appliance with a Compute Node")
 
 ```
-insert-ethers --replace devel-0-0
+insert-ethers --replace devel-server-0-0
 ```
 
 !["Cluster with Compute Nodes"](images/FE_+_CN.png?raw=true "Cluster with Compute Nodes")
@@ -66,9 +76,13 @@ Choose the version of Rocks to install.
 
 !["Rocks Download Page"](images/1Download_Rocks_Cropped.png?raw=true "Rocks Download Page")
 
+- Determine whether your CPU architecture is 32-bit or 64-bit.  You can run the 
+command ``lscpu`` and refer to the "CPU op-modes(s):" section.
+- If your system does not support the 64-bit software then you will only be able to 
+install rolls under "i386"
 - Download the individual rolls you will need or simply download the **jumbo
-roll** which has been created to contain a few general rolls for your
-convenience.  *(jumbo roll contains: Boot, Base, Area51, Condor, Ganglia, HPC,
+(DVD) ISO** which has been created to contain a few general rolls for your
+convenience.  *(jumbo (DVD) ISO contains: Boot, Base, Area51, Condor, Ganglia, HPC,
 Java, Perl, Python, Bio, SGE, Web Server, KVM (on the x86_64 version), ZFS & OS
 Rolls)*
 - Burn the ISO to a disc or any other bootable media.
@@ -83,14 +97,16 @@ Area51, Ganglia, HPC, Java, Perl, Python, Bio, and SGE*
 Be aware that when the Rocks Installation boots, if you do not press any button
 the ``build`` command will automatically run without clarification of any of the
 options (you will be able to fill the options in during the installtion, but it
-is easier to input them as options of ``build``).  Boot to the media and do the
-``build`` command
+is easier to input them as options of ``build``).  Boot to the media and do the 
+command ``build``.
 
 ```
    build IP=192.168.117.5 netmask=255.255.255.128 dns=198.202.75.26 gateway=192.168.117.1
 ```
 
-   *The IP address is applied to the eth1 port*
+   *The above is an example of what you can input for the fields.  If you are unsure 
+   of what to input, then contact your network administrator.  The IP address is 
+   applied to the eth1 port*
 
 Continue to follow the instructions presented to you as it asks for the name of
 the machine and the password for the **root user**.  Installation may take up to
@@ -104,6 +120,9 @@ Return to the [Table of Contents](#table-of-contents)
 SSH Keys allow an extra layer of security for your cluster and any other cluster
 you access.  It is good practice to use SSH Keys to prevent your data from being
 accessed or corrupted by infiltrating users.
+
+SSH is required to access the cluster as you cannot use Telnet or RSH and using 
+SSH keys will make it easier to access the cluster.
 
 ### Setting Up SSH Keys
 
@@ -127,14 +146,14 @@ will be located in the *~/.ssh* directory.  Now you must ``scp`` the generated
 keys onto the remote computer (typically your front end that you are accessing)
 
 ```
-	scp ~/.ssh/gsiman_dsa.pub root@hpcdev-006:.ssh/gsiman_dsa.pub
+	scp ~/.ssh/<user>_dsa.pub root@frontend:.ssh/<user>_dsa.pub
 ```
 
 Then ``ssh`` onto your front end and ``cd`` into the */.ssh* directory.  Append
 the key you copied in to the *authorized_keys* file by doing
 
 ```
-	cat gsiman_dsa.pub >> authorized_keys
+	cat <user>_dsa.pub >> authorized_keys
 ```
 
 Your ssh key is now on the remote compute.  Keep in mind that when you ssh into
@@ -143,6 +162,8 @@ the computer now it will ask you for the **passphrase** you entered in earlier.
 Return to the [Table of Contents](#table-of-contents)
  
 ## Installing Your Development Appliance
+
+!["Cluster with a Development Appliance"](images/FE_+_DA_+_CN.png?raw=true "Cluster with a Development Appliance")
 
 After connecting all the hardware up through a switch on their *eth0* ports to
 connect all the nodes up to the front end, make sure that all the nodes are off.
@@ -153,7 +174,7 @@ command for more information on rocks commands.
 Now open up a terminal on your front end and do the following command
 
 ```
-	insert-ethers --basename devel
+	insert-ethers
 ```
 
 The screen below will then pop up on your terminal:
@@ -161,14 +182,15 @@ The screen below will then pop up on your terminal:
 !["insert-ethers interface"](images/01_insert-ethers_devel-server.png?raw=true "insert-ethers interface")
 
 Select to install a Development Applaince.  Now turn on the desired node and
-wait until it is detected.  If you are using a KVM connection to see the boot
-of the node you should see the following next few screens.
+wait until it is detected.  The boot screens were captured to be the following 
+next few screens.
 
 !["devel-server pxe boot"](images/02_devel-server_pxe_boot_01.png?raw=true "devel-server pxe boot")
 
 !["devel-server pxe boot"](images/03_devel-server_pxe_boot_02.png?raw=true "devel-server pxe boot")
 
-You may encounter disk failures when attempting to reinstall the node.  You will see this screen if you are.
+You may encounter disk failures when attempting to reinstall the node.  You will 
+see this screen if you are.
 
 !["insert-ethers node discovered"](images/04_devel-server_disk_fail.png?raw=true "insert-ethers node discovered")
 
@@ -184,7 +206,7 @@ until it is safe to do so (this is explained later in this tutorial).  When a
 node is installing you can check its progress by using the command
 
 ```
-	rocks console devel-0-0
+	rocks console devel-server-0-0
 ```
 
 If you have connected to your frontend from a machine with an X server you will
@@ -198,35 +220,49 @@ If you need to look up the **hostnames** of your nodes then use the command
 	[gsiman@hpcdev-006 ~]$ rocks list host
 	HOST              MEMBERSHIP   CPUS RACK RANK RUNACTION INSTALLACTION
 	hpcdev-006:       Frontend     8    0    0    os        install
-	devel-0-0:        Development  16   0    0    os        install
+	devel-server-0-0:        Development  16   0    0    os        install
 ```
    *The hostnames are in the first column*
 
 You will not be able to use the ``rocks console`` command once the installation
-is done, but at that point you will be able to simply ``ssh`` into it.  When *s
-appear between all of the *()s* you may press the *f8* key to quit the GUI
-without interupting the installation.
+is done, but at that point you will be able to simply ``ssh`` into it.  When an
+asterisk charater appears between all of the *()s* you may press the *f8* key to 
+quit the GUI without interupting the installation.
 
 !["Exit insert-ethers with <F8>"](images/07_insert-ethers_devel-server_kickstart_sent.png?raw=true "Exit insert-ethers with <F8>")
 
 Once the installation of your node(s) is complete test if you can ``ping`` and
 ``ssh`` into all of your nodes
 
+Ping 
 ```
-	ping devel-0-0
-	ssh devel-0-0
+	ping frontend
+```
+Output
+```
+    PING frontend (192.168.117.10) 56(84) bytes of data.
+    64 bytes from frontend (192.168.117.10): icmp_seq=1 ttl=63 time=0.277 ms
+    64 bytes from frontend (192.168.117.10): icmp_seq=2 ttl=63 time=0.253 ms
+    64 bytes from frontend (192.168.117.10): icmp_seq=3 ttl=63 time=0.259 ms
+```
+SSH
+```
+	ssh frontend
+```
+Output
+```
+<user>@frontend's password:
+Last login: Wed Sep 18 09:36:02 2013 from cpe-75-80-151-205.san.res.rr.com
 ```
 
 Return to the [Table of Contents](#table-of-contents)
-..	The content in this file/document is the primary content of the
-	tutorial. Consider making *this* document the actual tutorial and
-	pointing the README.rst file to it. Possibly it should go at/near the
-	'top' of the Triton roll repository root.
 
 ## Installing Rocks Rolls
 
-Throughout this tutorial bear in mind that being in **root** is potentially
-dangerous to your system
+Throughout this tutorial bear in mind that executing commands while logged in 
+as the root user is potentially dangerous. Use caution and double-check commands 
+before executing them. This is the primary reason for building rolls on a 
+development appliance as it can help keep you from messing up your frontend.
 
 In order to avoid unnecessary reinstallations of your frontend, please do all
 ``make`` commands for creating ISOs on the development appliance.  This is to
@@ -237,12 +273,12 @@ frontend.  You may always reinstall your nodes if an error were to occur.
 ..	Rocks convention is to call the primary host the frontend not *front end*
 -->
 
-### How To Get The Triton Repo
+### How To Get The Triton Rolls
 
-The Triton Repo is located in GitHub.  A bash script has been supplied below in
-order for you to use git clone to acquire your own copy:
+The Triton Rolls are located on the [Rocks Cluster Website](http://git.rocksclusters.org/cgi-bin/gitweb.cgi). A bash script has been supplied below in order for you to use git clone to 
+acquire your own copy:
 
-https://raw.github.com/sdsc/cluster-guide/master/triton_repo_script.sh
+[Triton Rolls Script](https://raw.github.com/sdsc/cluster-guide/master/scripts/triton_rolls_script.sh)
 
 ```
 	#/bin/bash
@@ -284,15 +320,6 @@ Typically the rolls that need to be installed manually are:
 ..	See previous comment about naming specific Triton repos.
 -->
 
-For more information read **triton/src/roll/bootstrap.sh**, which is located in
-the code drop from the Triton Repository. ``scp`` the files onto your
-*devel-server-0-0* into a place with enough space such as */state/partition1/*
-and ``ssh`` onto your development server:
-
-<!--
-..	The mentioned bootstrap.sh script is NOT pulled from the Triton Repository.
--->
-
 ```
 	scp $TRITONREPO root@devel-server-0-0:/state/partition1/
 	ssh root@devel-server-0-0
@@ -319,7 +346,12 @@ by using the following command
 	make default 2>&1 | tee log
 ```
 
-*This pipe will create a log file located in the roll's directory*
+*This pipe will create a log file located in the roll's directory
+
+1 is stdout. 2 is stderr.
+
+It will be interpreted as "redirect stderr to a file named 1". & indicates 
+that what follows is a file descriptor and not a filename.*
 
 In the log files you may use this command to check for errors
 
@@ -340,7 +372,7 @@ frontend to set up the distribution.  Copy the ISOs to a direcory in your home
 directory
 
 ```
-	scp intel-6.1-0.x86_64.disk1.iso root@hpcdev-006:~/rolls_to_add/
+	scp intel-6.1-0.x86_64.disk1.iso root@frontend:~/rolls_to_add/
 ```
 
 <!--
@@ -350,7 +382,7 @@ directory
 
 ### Installing the Roll
 
-Go back to your frontend and ``cd`` into the directory that you copied the ISO
+Login on your frontend and ``cd`` into the directory that you copied the ISO
 over to.  Once there use the following commands
 
 ```
@@ -362,12 +394,6 @@ In order to set up the distro you must ``cd`` over to the right directory
 
 ```
 	cd /export/rocks/install
-```
-
-Once there you may create the distro by running
-
-```
-	rocks create distro
 ```
 
 You may check to see if your roll has been properly added and enabled by using
@@ -385,9 +411,16 @@ The output for this command will be
 	kvm:          6.1        x86_64 yes    
 	web-server:   6.1        x86_64 yes    
 	bio:          6.1        x86_64 yes 
+	intel:        6.1        x86_64 yes
 ```
 
    *Look for the name of the roll in the first column*
+
+Once there you may create the distro by running
+
+```
+	rocks create distro
+```
 
 <!--
 ..	All essentially fine.
@@ -396,7 +429,7 @@ The output for this command will be
 Repeat these steps for each roll that needs to be installed.  When you run into
 an error building an ISO on the development appliance it may be due to the
 dependencies.  If this is the case you must reinstall the node by doing the
-method described in `Reinstalling Your Development Appliance`_.
+method described in [Reinstalling Your Development Appliance](#reinstalling-your-development-appliance).
 
 <!--
 ..	This is an interesting problem and should be expanded upon. Simply
@@ -422,7 +455,7 @@ There are a few ways that you can test whether or not a roll has been
 successfully installed on a cluster.  These debugging methods are discussed in
 detail on the Rocks Clusters documentation site listed below.
 
-`Rocks Cluster Debugging <http://www.rocksclusters.org/roll-documentation/developers-guide/5.4.3/testing-post.html>`_
+[Rocks Cluster Debugging](http://www.rocksclusters.org/roll-documentation/developers-guide/5.4.3/testing-post.html)
 
 Below are a few debugging tests that you may also use.
 
@@ -437,7 +470,7 @@ run the following command::
 
    *This will create an xml file that you can search for errors*
 
-If the output does not contain errors than it should run fine.  Run a ``grep``
+If the output does not contain errors then the roll should have installed correctly.  Run a ``grep``
 command to search for errors::
 
 ```
@@ -448,9 +481,10 @@ If you do not grep any errors then this test has passed.
 
 ### The Perl Script Test
 
-A Perl script is installed with each of the roll installations to test whether
-or not the roll has been properly installed.  First you must change directory
-into the directory that the scripts are installed into::
+A Perl script may be installed with each of the roll installations after running 
+``rocks run roll <rollname> | bash`` on the front end after rebuilding the 
+distro to test whetheror not the roll has been properly installed.  First you 
+must change directory into the directory that the scripts are installed into::
 
 ```
 	cd /root/rolltests/
@@ -461,71 +495,141 @@ check which of the rolls you installed have perl scripts.  To run a Perl scripts
 simply put in the following command::
 
 ```
-	perl scar.t
+	perl intel.t
 ```
 
 This will automatically run a script which should create an output similar to
-the following::
+the following scenarios.
+
+Intel compilers and license installed correctly::
 
 ```
-	[root@hpcdev-01 rolltests]# perl scar.t
-	ok 1 - gfortran installed
-	ok 2 - g++ installed
-	ok 3 - ipmi installed
-	ok 4 - gdb installed
-	ok 5 - sysstat installed
-	ok 6 - xterm installed
-	ok 7 - php installed
-	ok 8 - emacs installed
-	ok 9 - gnu module installed
-	ok 10 - gnu version module installed
-	ok 11 - gnu version module link created
-	ok 12 - module search path set up
-	ok 13 - audit service created
-	ok 14 - audit config created
-	ok 15 - audit rules added
-	/etc/init.d/audit: line 37: auditctl: command not found
-	not ok 16 - audit running
-	#   Failed test 'audit running'
-	#   at scar.t line 38.
-	#                   ''
-	#     doesn't match '(?-xism:LIST_RULES)'
-	ok 17 # skip not compute node
-	ok 18 # skip not compute node
-	ok 19 # skip not compute node
-	ok 20 # skip not compute node
-	ok 21 # skip not compute node
-	ok 22 # skip not compute node
-	ok 23 # skip not compute node
-	ok 24 # skip not compute node
-	ok 25 # skip not compute node
-	ok 26 # skip not compute node
-	ok 27 # skip not login node
-	ok 28 # skip not login node
-	ok 29 # skip not login node
-	ok 30 # skip not login node
-	ok 31 # skip not login node
-	ok 32 # skip not login node
-	ok 33 # skip not login node
-	ok 34 # skip not login node
-	ok 35 # skip not login node
-	ok 36 # skip not login node
-	ok 37 # skip not login node
-	ok 38 # skip not login node
-	ok 39 # skip not login node
-	ok 40 # skip not login node
-	ok 41 # skip not login node
-	ok 42 # skip not login node
-	ok 43 - scar library installed
-	ok 44 - sphinx installed
-	ok 45 - scar scripts installed
-	ok 46 - sphinx installed
-	ok 47 - gmond config modified
-	ok 48 - login appliance defined
-	ok 49 - PYTHONPATH modified
-	ok 50 - install x11 on compute nodes
-	1..50
-	# Looks like you failed 1 test of 50.
+[root@frontend ~]# ./rolltests/intel.t
+ok 1 - intel compilers installed
+ok 2 - intel C compiler works
+ok 3 - compiled C program runs
+ok 4 - compile C program correct output
+ok 5 - intel FORTRAN compiler works
+ok 6 - compiled FORTRAN program runs
+ok 7 - compile FORTRAN program correct output
+ok 8 - man works for intel
+ok 9 - intel module installed
+ok 10 - intel version module installed
+ok 11 - intel version module link created
+1..11
+```
+
+Intel compilers not installed/available::
+
+```
+[root@frontend ~]# ./rolltests/intel.t
+not ok 1 - intel compilers installed
+#   Failed test 'intel compilers installed'
+#   at ./rolltests/intel.t line 34.
+ok 2 # skip intel compilers not installed
+ok 3 # skip intel compilers not installed
+ok 4 # skip intel compilers not installed
+ok 5 # skip intel compilers not installed
+ok 6 # skip intel compilers not installed
+ok 7 # skip intel compilers not installed
+ok 8 # skip intel compilers not installed
+ok 9 # skip intel compilers not installed
+ok 10 # skip intel compilers not installed
+ok 11 # skip intel compilers not installed
+1..11
+# Looks like you failed 1 test of 11.
+```
+
+Intel compilers installed but module file(s) not installed/loaded correctly (modules loaded automatically by intel.t)::
+
+```
+[root@frontend ~]# ./rolltests/intel.t
+ok 1 - intel compilers installed
+find: `/opt/modulefiles': No such file or directory
+ModuleCmd_Load.c(200):ERROR:105: Unable to locate a modulefile for 'intel'
+not ok 2 - intel C compiler works
+#   Failed test 'intel C compiler works'
+#   at ./rolltests/intel.t line 48.
+find: `/opt/modulefiles': No such file or directory
+ModuleCmd_Load.c(200):ERROR:105: Unable to locate a modulefile for 'intel'
+sh: ./tmpintel: No such file or directory
+not ok 3 - compiled C program runs
+#   Failed test 'compiled C program runs'
+#   at ./rolltests/intel.t line 50.
+not ok 4 - compile C program correct output
+#   Failed test 'compile C program correct output'
+#   at ./rolltests/intel.t line 51.
+#                   ''
+#     doesn't match '(?-xism:Hello world)'
+find: `/opt/modulefiles': No such file or directory
+ModuleCmd_Load.c(200):ERROR:105: Unable to locate a modulefile for 'intel'
+not ok 5 - intel FORTRAN compiler works
+#   Failed test 'intel FORTRAN compiler works'
+#   at ./rolltests/intel.t line 54.
+find: `/opt/modulefiles': No such file or directory
+ModuleCmd_Load.c(200):ERROR:105: Unable to locate a modulefile for 'intel'
+sh: ./tmpintel: No such file or directory
+not ok 6 - compiled FORTRAN program runs
+#   Failed test 'compiled FORTRAN program runs'
+#   at ./rolltests/intel.t line 56.
+not ok 7 - compile FORTRAN program correct output
+#   Failed test 'compile FORTRAN program correct output'
+#   at ./rolltests/intel.t line 57.
+#                   ''
+#     doesn't match '(?-xism:Hello world)'
+find: `/opt/modulefiles': No such file or directory
+ModuleCmd_Load.c(200):ERROR:105: Unable to locate a modulefile for 'intel'
+not ok 8 - man works for intel
+#   Failed test 'man works for intel'
+#   at ./rolltests/intel.t line 60.
+not ok 9 - intel module installed
+#   Failed test 'intel module installed'
+#   at ./rolltests/intel.t line 64.
+not ok 10 - intel version module installed
+#   Failed test 'intel version module installed'
+#   at ./rolltests/intel.t line 66.
+not ok 11 - intel version module link created
+#   Failed test 'intel version module link created'
+#   at ./rolltests/intel.t line 67.
+1..11
+# Looks like you failed 10 tests of 11.
+```
+
+Intel compilers installed without license (real or demo) installed::
+
+```
+[root@frontend ~]# ./rolltests/intel.t
+ok 1 - intel compilers installed
+not ok 2 - intel C compiler works
+#   Failed test 'intel C compiler works'
+#   at ./rolltests/intel.t line 48.
+sh: ./tmpintel: No such file or directory
+not ok 3 - compiled C program runs
+#   Failed test 'compiled C program runs'
+#   at ./rolltests/intel.t line 50.
+not ok 4 - compile C program correct output
+#   Failed test 'compile C program correct output'
+#   at ./rolltests/intel.t line 51.
+#                   ''
+#     doesn't match '(?-xism:Hello world)'
+not ok 5 - intel FORTRAN compiler works
+#   Failed test 'intel FORTRAN compiler works'
+#   at ./rolltests/intel.t line 54.
+sh: ./tmpintel: No such file or directory
+not ok 6 - compiled FORTRAN program runs
+#   Failed test 'compiled FORTRAN program runs'
+#   at ./rolltests/intel.t line 56.
+not ok 7 - compile FORTRAN program correct output
+#   Failed test 'compile FORTRAN program correct output'
+#   at ./rolltests/intel.t line 57.
+#                   ''
+#     doesn't match '(?-xism:Hello world)'
+ok 8 - man works for intel
+ok 9 - intel module installed
+ok 10 - intel version module installed
+ok 11 - intel version module link created
+1..11
+# Looks like you failed 6 tests of 11.
 ```
 
 From these outputs you should be able to find out whether or not your rolls have
@@ -535,32 +639,38 @@ Return to the [Table of Contents](#table-of-contents)
 
 ## Reinstalling Your Development Appliance
 
-You will need to reinstall your Development Appliance as a Compute Node.  In
+You may wish to reinstall your Development Appliance as a Compute Node.  In
 order to do so you must first remove it as an installed appliance on your Front
 End.
 
 First set the boot action to install on the Front End by inputing::
 
 ```
-	rocks set host boot devel-0-0 action=install
+	rocks set host boot devel-server-0-0 action=install
 ```
 
 ``ssh`` into the appliance you are reinstalling and change its settings to
 ensure its boot settings are set to pxe and reboot the node::
 
 ```
-	ssh devel-0-0
+	ssh devel-server-0-0
 	ipmitool chassis bootdev pxe options=persistent
 	shutdown
 ```
 
-*If you are reinstalling your Development Appliance due to dependencies then
-perform a ``reboot`` instead of a ``shutdown``*
+*Your nodes may be required to be reinstalled so that the installed rolls on the 
+frontend are installed on your nodes clearing up any dependency issures.  If you 
+are reinstalling your Development Appliance for this reason thenperform a ``reboot`` 
+instead of a ``shutdown``*
+
+``ipmitool`` is being used to changed the settings of your node to conduct a pxe boot.
+This needs to be changed using ipmitool because it is a setting outside of your UNIX 
+installation.
 
 Return to your Front End and remove the host so that it will reinstall upon boot::
 
 ```
-	rocks remove host devel-0-0
+	rocks remove host devel-server-0-0
 ```
 
 Finally you may reinstall the node and your remaining nodes as compute nodes
