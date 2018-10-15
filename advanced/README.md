@@ -667,7 +667,7 @@ Triton intel roll.
 See the Rocks documentation for examples of how to re-install your cluster
 nodes...
 
-- [Forcing a Re-install at Next PXE Boot](http://central6.rocksclusters.org/roll-documentation/base/6.1/x1817.html)
-- [Reinstall All Compute Nodes with SGE](http://central6.rocksclusters.org/roll-documentation/base/6.1/sge-cluster-reinstall.html)
+- [Forcing a Re-install at Next PXE Boot](http://www.rocksclusters.org/assets/usersguides/roll-documentation/base/6.1/x1817.html)
+- [Reinstall All Compute Nodes with SGE](http://www.rocksclusters.org/assets/usersguides/roll-documentation/base/6.1/sge-cluster-reinstall.html)
 
 Go back to the [Table of Contents](#table-of-contents)
